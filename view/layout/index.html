@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="userApp">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple User Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  </head>
+  <body ng-controller="userController">
+    <div class="container">
+      <h1>Add User</h1>
+      <form ng-submit="addUser()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" ng-model="user.name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" ng-model="user.email" required />
+
+        <button type="submit">Add User</button>
+      </form>
+
+      <p>{{ message }}</p>
+    </div>
+
+    <script>
+      const app = angular.module("userApp", []);
+
+      app.controller("userController", function ($scope, $http) {
+        $scope.user = {};
+        $scope.message = "";
+
+        $scope.addUser = function () {
+          $http
+            .post("/api/users/add", $scope.user)
+            .then(function (response) {
+              $scope.message = response.data.message;
+              $scope.user = {}; // reset form jadi kosong
+            })
+            .catch(function (error) {
+              $scope.message = error.data.message || "An error occurred!";
+            });
+        };
+      });
+    </script>
+  </body>
+</html>

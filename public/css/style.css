@@ -1,0 +1,17 @@
+body {
+    background-color: #faf8fa;
+  }
+  
+.container {
+    max-width: 400px;
+    margin: auto;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tester1 {
+    background-color: rgb(0, 168, 168);
+}
+  

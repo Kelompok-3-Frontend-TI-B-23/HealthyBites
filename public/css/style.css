@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: #faf8fa;
   }
   
@@ -13,5 +13,127 @@ body {
 
 .tester1 {
     background-color: rgb(0, 168, 168);
-}
+} */
   
+.navbar {
+    margin: 0 auto;
+}
+
+/* ----------------------------------------------------------------------------- */
+:root {
+    --dark-green: #16542a;
+    --darker-green: #0a3d23;
+    --brown:  #955306;
+    --yellow:  #f3c430;
+}
+
+/* custom warna text */
+.dark-green-text {
+    color: var(--dark-green);
+}
+
+/* backgorund custom */
+.bg-dark-green {
+    background-color: var(--darker-green);
+}
+
+/* button custom */
+.btn-dark-green {
+    background-color: var(--dark-green);
+    color:white;
+}
+
+.btn-dark-green:hover {
+    background-color: var(--darker-green);
+    color: white;
+}
+
+.btn-yellow {
+    background-color: var(--brown);
+    color:white;
+}
+
+.btn-yellow:hover {
+    background-color: var(--yellow);
+    color: white;
+}
+
+/* zoom custom */
+.zoom-shadow-1 {
+    transition: transform 0.3s ease;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+.zoom-shadow-1:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+
+/* animation custom  */
+.hover-scale-zoom1 {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale-zoom1:hover{
+    transform: scale(1.1);
+}
+
+.hover-scale-zoom2 {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale-zoom2:hover{
+    transform: scale(1.02);
+}
+
+/* HERO SECTION */
+@keyframes typing {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+.hero-title {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid var(--yellow);
+    animation: typing 4s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+    50% {
+        border-color: transparent;
+    }
+}
+
+/* NUTRISI */
+#carouselExampleCaptions .carousel-inner {
+    height: 100%; 
+}
+
+#carouselExampleCaptions .carousel-item img {
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.carousel-caption {
+    background-color: rgba(48, 47, 47, 0.4); 
+    border-radius: 0.6rem; 
+}
+
+/* FOOTER */
+#footer {
+    color: white;
+}
+
+
+

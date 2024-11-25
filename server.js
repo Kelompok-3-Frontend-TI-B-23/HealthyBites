@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoutes = require('./routes/userRoute');
+const authMiddleware = require('./middlewares/authMiddleware');
 require('dotenv').config();
 
 const app = express();
@@ -15,7 +16,9 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/public/login.html');
 });
-
+app.get('/bmi', authMiddleware, (req, res) => {
+  res.sendFile(__dirname + '/public/bmi.html');
+});
   
 // Koneksi MongoDB
 const dbURI = process.env.MONGO_URI || 'mongodb://localhost:27017';

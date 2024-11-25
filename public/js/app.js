@@ -1,5 +1,6 @@
 // Module mainApp
 const app = angular.module('mainApp', []);
+angular.module('bmiApp', []);
 
 // Controller untuk Create Account
 app.controller('createAccountCtrl', function ($scope, $http) {

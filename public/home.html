@@ -1,31 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
-  </head>
-  <body ng-app="mainApp" ng-controller="homeCtrl">
-    <div ng-if="currentUser">
-      <h1>Welcome, {{ currentUser.username }}</h1>
-      <p>Email: {{ currentUser.email }}</p>
-      <p>Username: {{ currentUser.username }}</p>
-      <button ng-click="logout()">Logout</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <!-- CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <!-- Navbar Brand Tetap di Kiri -->
+            <a style="color: #16542a" class="navbar-brand" href="#">Navbar</a>
+
+            <!-- Button Toggle untuk Mobile -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu Navigasi di Tengah -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-3">
+                        <a style="color: #16542a" class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a style="color: #16542a" class="nav-link" href="#">Resep</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a style="color: #16542a" class="nav-link" href="#">Info Nutrisi</a>
+                    </li>
+                    <li class="nav-item mx-3">
+                        <a style="color: #16542a" class="nav-link" href="#">Berita</a>
+                    </li>
+                    <li class="nav-item dropdown mx-3">
+                        <a style="color: #16542a" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Kalkulator
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a style="color: #16542a" class="dropdown-item" href="#">Kalkulator BMI</a></li>
+                            <li><a style="color: #16542a" class="dropdown-item" href="#">Kalkulator BBI</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Ikon Profil di Kanan -->
+            <div class="d-flex justify-content-end">
+            <a href="https://x.com/" class="dark-green-text" style="width: 2.5rem; height: 2.5rem;">
+                <i data-feather="user" style="width: 1.6rem; height: 1.6rem;"></i>
+            </a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section pt-2">
+        <div class="container">
+            <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="hero-title dark-green-text">Live Your Best Life</h1>
+                <p class="">Discover wellness tips, lifestyle trends, and inspiration for a balanced life.</p>
+                <a href="#" class="btn btn-dark-green btn-lg hover-scale-zoom1">Read More</a>
+            </div>
+            <div class="col-lg-6">
+                <img src="assets/About-image.jpg" alt="Lifestyle" class="img-fluid featured-image rounded-5">
+            </div>
+            </div>
+        </div>
+    </section>
+   
+    <div class="p-5">
+      <h3 class="dark-green-text text-center fw-bold display-6 pt-5 mt-4">Jelajahi Resep Populer</h3>
+      <p class="text-center ">
+        Stay ahead in fashion with insights into what's trending,
+        sustainable fashion tips, and more.
+      </p>
+      
+      <div class="row row-cols-1 row-cols-md-3 g-4 p-5">
+        <div class="col">
+          <div class="card zoom-shadow-1">
+            <img src="assets/Gyoza.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title dark-green-text">Card title</h5>
+              <p class="card-text text-muted">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <a href="#" class="btn btn-dark-green zoom-shadow-1">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card zoom-shadow-1">
+            <img src="assets/Seblak.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title dark-green-text">Card title</h5>
+              <p class="card-text text-muted">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <a href="#" class="btn btn-dark-green zoom-shadow-1">Read More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card zoom-shadow-1">
+            <img src="assets/Toast.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title dark-green-text">Card title</h5>
+              <p class="card-text text-muted">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-dark-green zoom-shadow-1">Read More</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div ng-if="!currentUser && !errorMessage">
-      <p>Loading user data...</p>
+    <div class="pt-5">
+      <h3 class="dark-green-text text-center fw-bold display-6 pt-5 mt-4">Lihat Nutrisi Makanan Kekinian</h3>
+      <p class="text-center ">
+        Stay ahead in fashion with insights into what's trending,
+        sustainable fashion tips, and more.
+      </p>
+      <div id="carouselExampleCaptions" class="carousel slide p-5">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/Gyoza.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
+              <a href="#" class="btn btn-yellow zoom-shadow-1">Read More</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Seblak.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+              <a href="#" class="btn btn-yellow zoom-shadow-1">Read More</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="assets/Toast.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+              <a href="#" class="btn btn-yellow zoom-shadow-1">Read More</a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    
+    <div class="container mt-5">
+      <h3 class="dark-green-text text-center fw-bold display-6 pt-5 mt-4">Lihat Berita Terkini</h3>
+      <p class="text-center ">
+        Stay ahead in fashion with insights into what's trending,
+        sustainable fashion tips, and more.
+      </p>
+      <div class="row p-5">
+        <div class="col-md-6">
+          <div class="card mb-3 zoom-shadow-1">
+            <img src="assets/About-image.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-6">
+          <h5>Berita Terkini</h5>
+          <div class="card bg-beige zoom-shadow-1 mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="assets/Gyoza.jpg" class="img-fluid rounded-start" alt="A woman doing yoga">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <a class="text-reset text-decoration-none" href="https://www.doyou.com/a-10-minute-morning-yoga-sequence-for-beginners/">
+                    <h5 class="card-title hover-scale-zoom2 dark-green-text">
+                      A 10-Minute Morning Yoga Sequence for Beginners
+                    </h5>
+                  </a>
+                  <p class="card-text">
+                    <small class="text-muted">
+                      <i data-feather="calendar" class="me-2" style="width: 1rem; height: 1rem;"></i>
+                      30 March 2022
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="card bg-beige zoom-shadow-1 mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="assets/Seblak.jpg" class="img-fluid rounded-start" alt="Meditation">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <a class="text-reset text-decoration-none" href="https://www.mindful.org/a-guided-meditation-to-encourage-deep-breathing/">
+                    <h5 class="card-title hover-scale-zoom2 dark-green-text">
+                      A Guided Meditation to Encourage Deep Breathing
+                    </h5>
+                  </a>
+                  <p class="card-text">
+                    <small class="text-muted">
+                      <i data-feather="calendar" class="me-2" style="width: 1rem; height: 1rem;"></i>
+                      28 August 2024
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <div class="card bg-beige zoom-shadow-1 mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="assets/Toast.jpg" class="img-fluid rounded-start" alt="Fitness tips">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <a class="text-reset text-decoration-none" href="https://cityfitness.com/top-5-tips-for-fitness-success/">
+                    <h5 class="card-title hover-scale-zoom2 dark-green-text">
+                      Top 5 Tips for Fitness Success
+                    </h5>
+                  </a>
+                  <p class="card-text">
+                    <small class="text-muted">
+                      <i data-feather="calendar" class="me-2" style="width: 1rem; height: 1rem;"></i>
+                      5 October 2023
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card text-center border-0 pt-5 pb-5 m-5">
+      
+      <div class="card-body">
+        <h5 class="card-title dark-green-text fw-bold display-6">Yakin Berat Badan Anda Ideal?</h5>
+        <p class="card-text">890 juta orang dari seluruh dunia mengalami obesitas. Hitung berat badan ideal Anda di sini!</p>
+        <a href="#" class="btn btn-dark-green hover-scale-zoom1">Kalkulator</a>
+      </div>
+      
     </div>
 
-    <div ng-if="errorMessage">
-      <p>Error: {{ errorMessage }}</p>
-    </div>
-    <!-- 
-    <div>
-      Username: <span ng-bind="currentUser.username"></span><br />
-      Email: <span ng-bind="currentUser.email"></span><br />
-    </div> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+    <footer class="bg-dark-green text-center text-lg-start border-top mt-5">
+      <div class="container p-4">
+        <div class="row">
+          <!-- Get Help Section -->
+          <div class="col-md-4 mb-3">
+            <h6 class="text-white text-uppercase fw-bold">Get Help</h6>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white text-decoration-none">FAQ</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Privacy Policy</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Terms and Condition</a></li>
+            </ul>
+          </div>
+          <!-- Useful Links Section -->
+          <div class="col-md-4 mb-3">
+            <h6 class="text-white text-uppercase fw-bold">Useful Links</h6>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Resep</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Info Nutrisi</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Berita</a></li>
+              <li><a href="#" class="text-white text-decoration-none">Kalkulator</a></li>
+            </ul>
+          </div>
+          <!-- Contact Section -->
+          <div class="col-md-4 mb-3">
+            <h6 class="text-white text-uppercase fw-bold">Contact</h6>
+            <ul class="list-unstyled">
+              <li><span class="text-white">Jakarta, Indonesia</span></li>
+              <li><a href="mailto:email@email.com" class="text-white text-decoration-none">email@email.com</a></li>
+              <li><span class="text-white">no telp</span></li>
+            </ul>
+          </div>
+        </div>
+    
+        <hr class="my-4 text-white" />
+    
+        <!-- Social Media Icons -->
+        <div class="row text-center p-4">
+          <div class="col-12 d-flex justify-content-center">
+              <a href="https://www.facebook.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem;">
+                  <i data-feather="facebook" style="width: 1rem; height: 1rem;"></i>
+              </a>
+              <a href="https://x.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem;">
+                  <i data-feather="twitter" style="width: 1rem; height: 1rem;"></i>
+              </a>
+              <a href="https://github.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem;">
+                  <i data-feather="github" style="width: 1rem; height: 1rem;"></i>
+              </a>
+              <a href="https://www.linkedin.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem;">
+                  <i data-feather="linkedin" style="width: 1rem; height: 1rem;"></i>
+              </a>
+          </div>
+        </div>
+    
+        <!-- Copyright Section -->
+        <p class="mb-0 text-white text-center">© 2024 Copyright</p>
+      </div>
+    </footer>
+    
+
+    <!-- JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/feather-icons@4.29.2/dist/feather.min.js"></script>  
+    <script>
+      feather.replace();
+    </script>
+</body>
 </html>

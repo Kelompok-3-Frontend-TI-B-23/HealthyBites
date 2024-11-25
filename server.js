@@ -15,6 +15,9 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.sendFile(__dirname + '/public/login.html');
 });
+app.get('/recipe', (req, res) => {
+    res.sendFile(__dirname + '/public/recipe.html');
+});
 
   
 // Koneksi MongoDB

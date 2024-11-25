@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/assets/images/icon-web.png" type="image/x-icon" />
+    <title>Recipe</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/recipe.css" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav id="nav-bar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="#">Recipe Collection</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Recipes</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-dark text-white text-center py-5">
+      <h2>Selamat Datang di Koleksi Resep!</h2>
+      <p>Cari Alternatif Resep Sehat Makanan Indonesia Favorit Anda Disini</p>
+      <div class="mt-3">
+        <input
+          type="text"
+          id="search"
+          class="form-control mx-auto w-50"
+          placeholder="Cari Resep"
+        />
+      </div>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="container my-5">
+      <h2 class="text-center mb-4">Filter</h2>
+      <div class="row g-3 justify-content-center">
+        <div class="col-md-3">
+          <select id="duration-filter" class="form-select">
+            <option value="">Filter Durasi</option>
+            <option value="singkat">Singkat (0-30 menit)</option>
+            <option value="sedang">Sedang (31-60 menit)</option>
+            <option value="lama">Lama (61+ menit)</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select id="difficulty-filter" class="form-select">
+            <option value="">Filter Kesulitan</option>
+            <option value="mudah">Mudah</option>
+            <option value="sedang">Sedang</option>
+            <option value="sulit">Sulit</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <select id="calories-filter" class="form-select">
+            <option value="">Filter Kalori</option>
+            <option value="rendah">Rendah (0-300 kcal)</option>
+            <option value="sedang">Sedang (301-600 kcal)</option>
+            <option value="tinggi">Tinggi (601+ kcal)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recipe Catalog -->
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card recipe-card">
+            <img
+              src="images/nasi-uduk-merah.jpg"
+              class="card-img-top"
+              alt="Nasi Goreng"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Nasi Goreng Spesial</h5>
+              <p>
+                <i class="fa fa-clock"></i> 20 menit |
+                <i class="fa fa-tasks"></i> Mudah |
+                <i class="fa fa-fire"></i> 400 kcal
+              </p>
+              <button class="btn btn-outline-danger">
+                <i class="fa fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card recipe-card">
+            <img
+              src="images/soto-ayam.jpg"
+              class="card-img-top"
+              alt="Soto Ayam"
+            />
+            <div class="card-body text-center">
+              <h5 class="card-title">Soto Ayam Tradisional</h5>
+              <p>
+                <i class="fa fa-clock"></i> 45 menit |
+                <i class="fa fa-tasks"></i> Sedang |
+                <i class="fa fa-fire"></i> 350 kcal
+              </p>
+              <button class="btn btn-outline-danger">
+                <i class="fa fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card recipe-card">
+            <img src="images/gudeg.jpg" class="card-img-top" alt="Mie Goreng" />
+            <div class="card-body text-center">
+              <h5 class="card-title">Mie Goreng Jawa</h5>
+              <p>
+                <i class="fa fa-clock"></i> 25 menit |
+                <i class="fa fa-tasks"></i> Mudah |
+                <i class="fa fa-fire"></i> 500 kcal
+              </p>
+              <button class="btn btn-outline-danger">
+                <i class="fa fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/recipe.js"></script>
+  </body>
+</html>

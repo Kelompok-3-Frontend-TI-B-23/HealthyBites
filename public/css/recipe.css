@@ -1,9 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Capriola&family=Carter+One&family=Original+Surfer&display=swap');
+
+
 :root{
-    /* Warna tentative */
-    --green-color: #3cb815;
-    --orange-color: #ff9a00;
-    --text-color: #1a2428;
-    --bg-color: #fcffee;
+  --dark-green: #16542a;
+  --darker-green: #0a3d23;
+  --brown: #955306;
+  --yellow: #f3c430;
+  --crean: #ffffec;
+  --green: #68902b;
+  --light-green: #9bbc43;
   }
   
   * {
@@ -14,7 +19,14 @@
   
   body{
     background-color: #fff;
-    color: var(--text-color);
+    background-image: url('../assets/background/back2.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: "Capriola", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     
   }
   
@@ -59,7 +71,7 @@
   
   .hero-section {
     width: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(./images/hero4.jpg);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../assets/About-image.jpg);
     background-repeat: no-repeat;
     background-position: center;
     color: white;
@@ -101,6 +113,7 @@
     object-fit: cover;
     border-bottom: 1px solid #ddd;
     transition: transform 0.3s ease;
+    
   }
   
   .recipe-card img {
@@ -134,8 +147,8 @@
     font-size: 14px;
     font-weight: bold;
     padding: 5px 10px;
-    color: orange;
-    border: 3px solid orange;
+    color: var(--green);
+    border: 3px solid var(--green);
     border-radius: 20px;
     background-color: white;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -143,29 +156,79 @@
   
   .details button:hover {
     color: white; 
-    background-color: orange; 
-    border: 3px solid white;
+    background-color: var(--yellow); 
+    border: 3px solid var(--yellow);
   }
   
   #recipe-description {
-    font-size: 20px;
+    max-width: 90%; 
+    margin: 0 auto;    
+    padding: 20px;   
+    font-size: 1.25rem;
+
   }
+/* Recipe btn */
+.card-btn {
+  display: flex;
+  justify-content: center;
+  gap:10px;
+}
+  .btn-recipe {
+    border: none;
+    background-color: transparent;
+    font-size: 1.5rem; /* Ukuran ikon */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Ukuran tombol */
+    height: 50px; /* Ukuran tombol */
+    box-sizing: border-box; /* Termasuk padding dalam ukuran */
+  }
+  
+  .btn-love {
+    background-color: red;
+    color: white;
+  }
+  
+  .btn-love:hover {
+    background-color: transparent;
+    color: red;
+  }
+  
+  .btn-bookmark {
+    background-color: var(--yellow);
+    color: white;
+  }
+  
+  .btn-bookmark:hover {
+    background-color: transparent;
+    color: var(--yellow);
+  }
+  
+  .btn i {
+    display: block;
+    line-height: 1; /* Menghilangkan spasi vertikal bawaan */
+  }
+  
   
   /* Back to Recipes Button */
   #back-button {
     margin: 20px 0 30px 0;
-    padding: 10px 20px;
-    background-color: var(--green-color);
+    padding: 20px 30px;
+    background-color: var(--green);
     color: white;
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 1.5rem;
     transition: background-color 0.3s ease;
   }
   
   #back-button:hover {
-    background-color: var(--orange-color);
+    background-color: var(--light-green)
   }
   
   /* List untuk Ingredients dan Steps */
@@ -212,7 +275,7 @@
   }
   
   /* Recipe Card and Info */
-  .recipe-card {
+.recipe-card {
     width: 100%;
     max-width: 400px;
     border: none;
@@ -222,7 +285,10 @@
     position: relative;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  }
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Selalu ada bayangan */
+}
+
   
   .recipe-card:hover {
     transform: scale(1.05) translateY(-5px);
@@ -242,31 +308,7 @@
     color: var(--green-color);
   }
   
-  /* Favorite Button */
-  .favorite-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: grey;
-    font-size: 25px;
-    transition: transform 0.3s ease;
-    background-color: #ebebeb;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 50%;
-  }
-  
-  .favorite-btn:hover {
-    transform: translateY(3px); 
-  }
-  
-  .favorite-btn.favorited {
-    color: #FF0000;
-  }
-  
+
   /* Load More Button */
   .load-more {
     display: block;
@@ -305,6 +347,7 @@
   
   input {
     font-size: 1rem;
+    width: 80%;
   }
   
   /* Filter Section */

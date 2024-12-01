@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Recipe</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Capriola&family=Carter+One&family=Original+Surfer&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/addRecipe.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  </head>
+  <body>
+    <!-- Form Wrapper -->
+    <div class="form-wrapper">
+      <h1 class="form-title">Add Recipe</h1>
+      <form id="addRecipeForm" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="duration">Duration (minutes):</label>
+          <input type="number" id="duration" name="duration" required />
+        </div>
+
+        <div class="form-group">
+          <label for="difficulty">Difficulty:</label>
+          <select id="difficulty" name="difficulty" required>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="image">Image:</label>
+          <input
+            type="file"
+            id="image"
+            name="image"
+            accept="image/*"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="calories">Calories:</label>
+          <input type="number" id="calories" name="calories" required />
+        </div>
+
+        <div class="form-group">
+          <label for="serving">Serving:</label>
+          <input type="number" id="serving" name="serving" required />
+        </div>
+
+        <div class="form-group">
+          <label for="ingredients">Ingredients (comma-separated):</label>
+          <textarea id="ingredients" name="ingredients" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="steps">Steps (comma-separated):</label>
+          <textarea id="steps" name="steps" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="nutritionCalories">Nutrition Calories:</label>
+          <input
+            type="number"
+            id="nutritionCalories"
+            name="nutritionCalories"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="nutritionCarbs">Carbs:</label>
+          <input
+            type="number"
+            id="nutritionCarbs"
+            name="nutritionCarbs"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="nutritionProtein">Protein:</label>
+          <input
+            type="number"
+            id="nutritionProtein"
+            name="nutritionProtein"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="nutritionFat">Fat:</label>
+          <input type="number" id="nutritionFat" name="nutritionFat" required />
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn-submit">Add Recipe</button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document
+        .getElementById("addRecipeForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const form = new FormData(e.target);
+
+          // Parse JSON fields
+          const ingredients = form
+            .get("ingredients")
+            .split(",")
+            .map((item) => item.trim());
+          const steps = form
+            .get("steps")
+            .split(",")
+            .map((item) => item.trim());
+
+          // Create Recipe object
+          const recipe = {
+            title: form.get("title"),
+            duration: form.get("duration"),
+            difficulty: form.get("difficulty"),
+            description: form.get("description"),
+            calories: form.get("calories"),
+            serving: form.get("serving"),
+            ingredients,
+            steps,
+            nutrition: {
+              calories: form.get("nutritionCalories"),
+              carbs: form.get("nutritionCarbs"),
+              protein: form.get("nutritionProtein"),
+              fat: form.get("nutritionFat"),
+            },
+          };
+
+          form.append("recipe", JSON.stringify(recipe));
+
+          try {
+            const response = await fetch("/api/recipes/upload", {
+              method: "POST",
+              body: form,
+            });
+            const data = await response.json();
+            alert(data.message);
+          } catch (error) {
+            console.error("Error:", error);
+          }
+        });
+    </script>
+  </body>
+</html>

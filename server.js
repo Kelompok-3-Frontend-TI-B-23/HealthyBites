@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const userRoutes = require('./routes/userRoute');
-const authMiddleware = require('./middlewares/authMiddleware');
 const path = require("path");
 const app = express();
 const bodyParser = require("body-parser");
@@ -39,8 +38,18 @@ app.get('/login', (req, res) => {
 app.get('/recipe', (req, res) => {
     res.sendFile(__dirname + '/public/recipe.html');
 });
+app.get('/recipe/:title', (req, res) => {
+    res.sendFile(__dirname + '/public/recipeDetail.html');
+});
 
-  
+app.get('/bmi', (req, res) => {
+    res.sendFile(__dirname + '/public/bmi.html');
+});
+
+app.get("/addRecipe", (req, res) => {
+    res.sendFile(path.join(__dirname, "public/addRecipe.html"));
+});
+
 // Koneksi MongoDB
 const dbURI = process.env.MONGO_URI || 'mongodb://localhost:27017';
 mongoose.connect(dbURI)

@@ -1,4 +1,4 @@
-angular.module('bmiApp').factory('BmiService', function () {
+angular.module('bmiApp', []).factory('BmiService', function () {
     return {
         calculateBMI: function (height, weight) {
             const bmi = (weight / (height * height) * 10000).toFixed(2);

@@ -5,15 +5,15 @@ angular.module('mainApp', ['ngRoute'])
 
   $routeProvider
     .when('/', {
-      templateUrl: 'createAccount.html',  // Halaman create akun
+      templateUrl: 'index.html',  // Halaman create akun
       controller: 'createAccountCtrl'
     })
     .when('/home', {
         templateUrl: 'home.html',  // Halaman utama (home)
         controller: 'homeCtrl'
       })
-    .when('/recipes', {
-      templateUrl: 'recipes.html',  // Halaman untuk menampilkan semua resep
+    .when('/recipe', {
+      templateUrl: 'recipe.html',  // Halaman untuk menampilkan semua resep
       controller: 'allRecipesCtrl'
     })
     .when('/login', {

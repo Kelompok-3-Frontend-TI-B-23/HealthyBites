@@ -1,4 +1,4 @@
-angular.module('mainApp').controller('createAccountCtrl', function ($scope, $http) {
+angular.module('mainApp').controller('createAccountCtrl', function ($scope, $http, $location) {
     $scope.formData = {};
     $scope.successMessage = '';
     $scope.errorMessage = '';
@@ -28,26 +28,28 @@ angular.module('mainApp').controller('createAccountCtrl', function ($scope, $htt
       }
   
       $http.post('/api/users', $scope.formData)
-        .then(function (response) {
-          $scope.successMessage = 'Akun berhasil dibuat!';
-          $scope.errorMessage = '';
-          window.location.href = '/login.html';
-        })
-        .catch(function (error) {
-          $scope.successMessage = '';
-          const errorResponse = error.data.error || 'Terjadi kesalahan saat membuat akun. Coba lagi.';
-          if (errorResponse.includes('Username')) {
-            $scope.usernameError = errorResponse;
-          } else {
-            $scope.usernameError = '';
-          }
-          if (errorResponse.includes('Email')) {
-            $scope.emailError = errorResponse;
-          } else {
-            $scope.emailError = '';
-          }
-          $scope.errorMessage = errorResponse;
-        });
+      .then(function (response) {
+        $scope.successMessage = 'Akun berhasil dibuat!';
+        $scope.errorMessage = '';
+        // Gunakan $location untuk navigasi ke halaman login
+        $location.path('/login');
+      })
+      .catch(function (error) {
+        $scope.successMessage = '';
+        const errorResponse = error.data.error || 'Terjadi kesalahan saat membuat akun. Coba lagi.';
+        if (errorResponse.includes('Username')) {
+          $scope.usernameError = errorResponse;
+        } else {
+          $scope.usernameError = '';
+        }
+        if (errorResponse.includes('Email')) {
+          $scope.emailError = errorResponse;
+        } else {
+          $scope.emailError = '';
+        }
+        $scope.errorMessage = errorResponse;
+      });
+    
     };
   });
   

@@ -23,17 +23,13 @@
     font-family: "Capriola", sans-serif;
     font-weight: 400;
     font-style: normal;
+
+      overflow-x: hidden;  /* Mencegah overflow horizontal */
+
+    
     
   }
 
-  .background {
-    background-image: url('../assets/background/back2.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
-  
   
   /* Container untuk Recipe Catalog dan Detail */
   .container {

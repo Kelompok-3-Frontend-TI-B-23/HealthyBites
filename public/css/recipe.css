@@ -19,15 +19,19 @@
   
   body{
     background-color: #fff;
+
+    font-family: "Capriola", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    
+  }
+
+  .background {
     background-image: url('../assets/background/back2.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: "Capriola", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    
   }
   
   
@@ -183,9 +187,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 50px; /* Ukuran tombol */
-    height: 50px; /* Ukuran tombol */
-    box-sizing: border-box; /* Termasuk padding dalam ukuran */
+    width: 50px; 
+    height: 50px; 
+    box-sizing: border-box; 
   }
   
   .btn-love {
@@ -210,7 +214,7 @@
   
   .btn i {
     display: block;
-    line-height: 1; /* Menghilangkan spasi vertikal bawaan */
+    line-height: 1; 
   }
   
   
@@ -286,7 +290,7 @@
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Selalu ada bayangan */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
   
@@ -394,14 +398,14 @@
   /* Buat ngebuat elemen hidden */
   .hidden {
     opacity: 0;
-    transform: translateY(80px); /* Geser ke bawah */
+    transform: translateY(80px); 
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   }
   
   /* Ketika elemen muncul */
   .show {
     opacity: 1;
-    transform: translateY(0); /* Balik posisi semula */
+    transform: translateY(0); 
   }
   
   
@@ -409,11 +413,11 @@
   @keyframes fadeInUp {
     0% {
         opacity: 0;
-        transform: translateY(50px); /* Geser  ke bawah */
+        transform: translateY(50px); 
     }
     100% {
         opacity: 1;
-        transform: translateY(0); /* Geser ke posisi semula */
+        transform: translateY(0); 
     }
   }
   

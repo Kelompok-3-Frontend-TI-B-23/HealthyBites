@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+  <head>
+    <title>All Recipes</title>
+    <base href="/" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Pastikan ini sesuai dengan path file app.js Anda -->
+  </head>
+  <body>
+    <div ng-view></div>
+    <!-- Tempat untuk menampilkan konten halaman -->
+
+    <!-- Template untuk menampilkan resep -->
+    <script type="text/ng-template" id="recipes.html">
+      <div class="container">
+        <h1>All Recipes</h1>
+        <div ng-if="recipes.length === 0">
+          <p>No recipes found!</p>
+        </div>
+        <div ng-repeat="recipe in recipes">
+          <div class="recipe">
+            <h2>{{ recipe.title }}</h2>
+            <p>{{ recipe.description }}</p>
+            <img ng-if="recipe.img" ng-src="{{ recipe.img }}" alt="{{ recipe.title }}" />
+          </div>
+        </div>
+      </div>
+    </script>
+    <script>
+      angular
+        .module("mainApp")
+        .controller("allRecipesCtrl", function ($scope, $http) {
+          // Ambil semua resep dari server
+          $http
+            .get("/api/recipes")
+            .then(function (response) {
+              // Menyimpan data resep yang diterima di dalam $scope
+              $scope.recipes = response.data;
+            })
+            .catch(function (error) {
+              console.error("Error fetching recipes:", error);
+            });
+        });
+    </script>
+  </body>
+</html>

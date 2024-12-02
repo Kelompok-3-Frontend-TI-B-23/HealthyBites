@@ -3,7 +3,7 @@ const router = express.Router();
 const multer = require('multer');
 const Recipe = require('../models/recipeModel');
 const path = require('path');
-
+const recipeController = require('../controllers/recipeController');
 // Konfigurasi multer untuk menyimpan gambar
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -38,6 +38,32 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   } catch (error) {
     console.error('Error uploading recipe:', error);
     res.status(500).json({ message: 'Error uploading recipe', error });
+  }
+});
+
+// router.get('/recipe/:title', recipeController.getRecipeByTitle);
+
+// Tambahkan rute di recipeRoute.js
+router.get('/', recipeController.getAllRecipes);
+
+
+// Route untuk mendapatkan resep berdasarkan recipeId
+router.get('/:recipeId', async (req, res) => {
+  try {
+    // Pastikan recipeId diparse menjadi tipe data integer
+    const recipeId = parseInt(req.params.recipeId, 10); // Menggunakan parseInt dengan basis 10
+
+    // Cari resep berdasarkan recipeId
+    const recipe = await Recipe.findOne({ recipeId: recipeId });
+
+    if (!recipe) {
+      return res.status(404).json({ message: 'Recipe not found' });
+    }
+
+    res.json(recipe); // Kembalikan data resep dalam format JSON
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
   }
 });
 

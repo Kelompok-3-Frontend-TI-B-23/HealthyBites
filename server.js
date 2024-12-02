@@ -10,7 +10,7 @@ const recipeRoutes = require("./routes/recipeRoute");
 
 
 const multer = require('multer');
-const upload = multer({ dest: 'public/uploads/' }); // Pastikan ini sesuai dengan folder upload gambar Anda
+const upload = multer({ dest: 'public/uploads/' }); 
 
 
 require('dotenv').config();
@@ -38,11 +38,18 @@ app.get('/login', (req, res) => {
 app.get('/recipe', (req, res) => {
     res.sendFile(__dirname + '/public/recipe.html');
 });
-app.get('/recipe/:title', (req, res) => {
-    res.sendFile(__dirname + '/public/recipeDetail.html');
+app.get('/hope', (req, res) => {
+    res.sendFile(__dirname + '/public/home.html');
 });
+app.get('/recipeDetail/:recipeId', (req, res) => {
+    res.sendFile(__dirname + '/public/recipeDetail.html');
+  });
 
-
+app.get('/recipes', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'recipes.html'));
+  });
+  
+  
 app.get("/addRecipe", (req, res) => {
     res.sendFile(path.join(__dirname, "public/addRecipe.html"));
 });

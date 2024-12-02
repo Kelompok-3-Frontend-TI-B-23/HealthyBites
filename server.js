@@ -7,14 +7,10 @@ const app = express();
 const bodyParser = require("body-parser");
 const imageRoute = require("./routes/imageRoute");
 const recipeRoutes = require("./routes/recipeRoute");
-
-
 const multer = require('multer');
-const upload = multer({ dest: 'public/uploads/' }); // Pastikan ini sesuai dengan folder upload gambar Anda
-
+const upload = multer({ dest: 'public/uploads/' }); 
 
 require('dotenv').config();
-
 
 app.use(express.json());
 app.use(cors());
@@ -25,21 +21,10 @@ app.use(bodyParser.json());
 app.use("/api/recipes", recipeRoutes); 
 app.use('/api/users', userRoutes);
 app.use("/api/images", imageRoute);
-
 app.use("/uploads", express.static("public/uploads")); // Folder untuk gambar
-// Menyajikan folder public sebagai file statis
-app.use(express.static(path.join(__dirname, 'public')));
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/createAccount.html');
-});
-app.get('/login', (req, res) => {
-    res.sendFile(__dirname + '/public/login.html');
-});
-app.get('/recipe', (req, res) => {
-    res.sendFile(__dirname + '/public/recipe.html');
-});
-app.get('/recipe/:title', (req, res) => {
-    res.sendFile(__dirname + '/public/recipeDetail.html');
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html')); // Atau index.html jika diganti
 });
 
 app.get('/bmi', (req, res) => {
@@ -48,10 +33,6 @@ app.get('/bmi', (req, res) => {
 
 app.get('/bbi', (req, res) => {
     res.sendFile(__dirname + '/public/bbi.html');
-});
-
-app.get("/addRecipe", (req, res) => {
-    res.sendFile(path.join(__dirname, "public/addRecipe.html"));
 });
 
 // Koneksi MongoDB
@@ -64,3 +45,5 @@ mongoose.connect(dbURI)
 // Sever jalan
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+

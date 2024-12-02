@@ -1,28 +1,35 @@
-// Module mainApp
-const app = angular.module('mainApp', []);
-angular.module('bmiApp', []);
+angular.module('mainApp', ['ngRoute'])
+.config(function($locationProvider, $routeProvider) {
+  // Enable HTML5 mode for clean URLs (without hashbangs)
+  $locationProvider.html5Mode(true);
+
+  $routeProvider
+    .when('/', {
+      templateUrl: 'index.html',  // Halaman create akun
+      controller: 'createAccountCtrl'
+    })
+    .when('/home', {
+        templateUrl: 'home.html',  // Halaman utama (home)
+        controller: 'homeCtrl'
+      })
+    .when('/recipe', {
+      templateUrl: 'recipe.html',  // Halaman untuk menampilkan semua resep
+      controller: 'allRecipesCtrl'
+    })
+    .when('/login', {
+      templateUrl: 'login.html',  // Halaman login
+      controller: 'loginCtrl'
+    })
+    .when('/addRecipe', {
+      templateUrl: 'addRecipe.html',  // Halaman untuk menambahkan resep baru
+      controller: 'addRecipeCtrl'
+    })
+    .when('/detailRecipe/:recipeId', {
+        templateUrl: 'recipeDetail.html', 
+        controller: 'recipeDetailCtrl' 
+      });
+
+});
 
 
-// angular.module('mainApp', ['ngRoute'])
-// .config(function($routeProvider) {
-//     $routeProvider
-//         .when('/', {
-//             templateUrl: 'createAccount.html',
-//             controller: 'createAccountCtrl'
-//         })
-//         .when('/login', {
-//             templateUrl: 'login.html',
-//             controller: 'loginCtrl'
-//         })
-//         .when('/recipe', {
-//             templateUrl: 'recipe.html',
-//             controller: 'recipeCtrl'
-//         })
-//         // .when('/recipe/:title', {
-//         //     templateUrl: 'recipeDetail.html',
-//         //     controller: 'recipeCtrl'
-//         // })
-//         .otherwise({
-//             redirectTo: '/login'
-//         });
-// });
+

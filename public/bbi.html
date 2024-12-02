@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="bmiApp">
+<html lang="en" ng-app="idealWeightApp">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kalkulator BMI</title>
+    <title>Kalkulator Berat Badan Ideal</title>
 
     <!-- Bootstrap CSS -->
     <link
@@ -13,35 +13,23 @@
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <!-- AngularJS Scripts -->
-    <script src="js/services/bmiService.js"></script>
-    <script src="js/controllers/bmiController.js"></script>
-    <!-- Custom CSS -->
+    <script src="js/services/idealWeightService.js"></script>
+    <script src="js/controllers/idealWeightController.js"></script>
     <link rel="stylesheet" href="css/bmi.css" />
   </head>
   <body>
     <div
       class="container vh-100 d-flex justify-content-center align-items-center"
-      ng-controller="BmiController"
+      ng-controller="IdealWeightController"
     >
-      <div class="card shadow-lg p-4" style="width: 100%; max-width: 600px;">
-        <h2 class="mb-3">Kalkulator BMI</h2>
+      <div class="card shadow-lg p-4">
+        <h2>Kalkulator Berat Badan Ideal</h2>
         <p class="text-muted">
-          Hitung Indeks Massa Tubuh Anda dengan mudah!
+          Hitung berat badan ideal Anda berdasarkan tinggi dan jenis kelamin!
         </p>
 
         <!-- Form -->
-        <form id="bmiForm" ng-submit="calculateBMI($event)" novalidate>
-          <div class="mb-3">
-            <label for="age" class="form-label">Umur</label>
-            <input
-              type="number"
-              id="age"
-              class="form-control"
-              placeholder="Masukkan umur"
-              ng-model="user.age"
-              required
-            />
-          </div>
+        <form id="idealWeightForm" ng-submit="calculateIdealWeight($event)" novalidate>
           <div class="mb-3">
             <label for="gender" class="form-label">Jenis Kelamin</label>
             <select id="gender" class="form-select" ng-model="user.gender" required>
@@ -61,24 +49,12 @@
               required
             />
           </div>
-          <div class="mb-3">
-            <label for="weight" class="form-label">Berat Badan (kg)</label>
-            <input
-              type="number"
-              id="weight"
-              class="form-control"
-              placeholder="Masukkan berat badan"
-              ng-model="user.weight"
-              required
-            />
-          </div>
           <button type="submit" class="btn btn-primary w-100">Hitung</button>
         </form>
 
         <!-- Result -->
-        <div id="result" class="mt-4" ng-if="bmiResult">
-          <h4 id="bmiValue" class="text-center">{{ bmiResult }}</h4>
-          <p id="bmiClassification" class="text-center">{{ bmiClassification }}</p>
+        <div id="result" class="mt-4" ng-if="idealWeightResult">
+          <h4 id="idealWeightValue" class="text-center">{{ idealWeightResult }}</h4>
         </div>
 
         <a href="/home" class="btn btn-outline-secondary mt-3 w-100">Kembali</a>

@@ -27,14 +27,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html')); // Atau index.html jika diganti
 });
 
-app.get('/bmi', (req, res) => {
-    res.sendFile(__dirname + '/public/bmi.html');
-});
-
-app.get('/bbi', (req, res) => {
-    res.sendFile(__dirname + '/public/bbi.html');
-});
-
 // Koneksi MongoDB
 const dbURI = process.env.MONGO_URI || 'mongodb://localhost:27017';
 mongoose.connect(dbURI)

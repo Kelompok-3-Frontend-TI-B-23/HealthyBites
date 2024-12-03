@@ -27,7 +27,15 @@ angular.module('mainApp', ['ngRoute'])
     .when('/detailRecipe/:recipeId', {
         templateUrl: 'recipeDetail.html', 
         controller: 'recipeDetailCtrl' 
-      });
+      })
+    .when('/bmi', {
+      templateUrl: 'bmi.html',
+      controller: 'bmiCtrl'
+    })
+    .when('/bbi', {
+      templateUrl: 'bbi.html',
+      controller: 'bmiCtrl'
+    })
 
 });
 

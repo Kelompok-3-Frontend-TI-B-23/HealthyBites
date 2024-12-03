@@ -5,14 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kalkulator Berat Badan Ideal</title>
 
-    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <!-- AngularJS Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
     <script src="js/services/idealWeightService.js"></script>
     <script src="js/controllers/idealWeightController.js"></script>
     <link rel="stylesheet" href="css/bmi.css" />
@@ -28,7 +25,6 @@
           Hitung berat badan ideal Anda berdasarkan tinggi dan jenis kelamin!
         </p>
 
-        <!-- Form -->
         <form id="idealWeightForm" ng-submit="calculateIdealWeight($event)" novalidate>
           <div class="mb-3">
             <label for="gender" class="form-label">Jenis Kelamin</label>
@@ -52,7 +48,6 @@
           <button type="submit" class="btn btn-primary w-100">Hitung</button>
         </form>
 
-        <!-- Result -->
         <div id="result" class="mt-4" ng-if="idealWeightResult">
           <h4 id="idealWeightValue" class="text-center">{{ idealWeightResult }}</h4>
         </div>

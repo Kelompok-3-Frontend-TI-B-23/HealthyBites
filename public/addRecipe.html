@@ -62,12 +62,12 @@
         </div>
 
         <div class="form-group">
-          <label for="ingredients">Bahan (pisahkan dengan koma):</label>
+          <label for="ingredients">Bahan (pisahkan dengan titik):</label>
           <textarea id="ingredients" name="ingredients" required></textarea>
         </div>
 
         <div class="form-group">
-          <label for="steps">Langkah-langkah (pisahkan dengan koma):</label>
+          <label for="steps">Langkah-langkah (pisahkan dengan titik):</label>
           <textarea id="steps" name="steps" required></textarea>
         </div>
 
@@ -123,11 +123,11 @@
           // Parse JSON fields
           const ingredients = form
             .get("ingredients")
-            .split(",")
+            .split(".")
             .map((item) => item.trim());
           const steps = form
             .get("steps")
-            .split(",")
+            .split(".")
             .map((item) => item.trim());
 
           // Create Recipe object

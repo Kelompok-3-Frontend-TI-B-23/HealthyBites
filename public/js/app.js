@@ -31,7 +31,7 @@ angular.module('mainApp', ['ngRoute'])
     .when('/detailRecipe/:recipeId', {
         templateUrl: 'recipeDetail.html', 
         controller: 'recipeDetailCtrl' 
-      });
+    });
 
 });
 

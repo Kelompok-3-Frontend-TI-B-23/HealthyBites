@@ -14,7 +14,7 @@ angular.module('mainApp', ['ngRoute'])
       })
     .when('/recipe', {
       templateUrl: 'recipe.html',  // Halaman untuk menampilkan semua resep
-      controller: 'allRecipesCtrl'
+      controller: 'recipeCtrl'
     })
     .when('/login', {
       templateUrl: 'login.html',  // Halaman login

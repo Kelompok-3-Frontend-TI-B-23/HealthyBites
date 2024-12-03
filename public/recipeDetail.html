@@ -16,58 +16,49 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
   </head>
-  <body class="background">
+  <body class="background" ng-controller="recipeDetailCtrl">
     <div class="recipe-detail-container fade-in-up">
       <!-- Recipe title -->
-      <h2 class="recipe-detail-title fade-in-up-1">Groza</h2>
+      <h2 class="recipe-detail-title fade-in-up-1">{{ recipe.title }}</h2>
 
       <!-- Recipe image -->
       <img
         class="recipe-image fade-in-up-3"
-        src="assets/gyoza.jpg"
-        alt="Groza Recipe Image"
+        ng-src="{{ recipe.img || 'assets/default-recipe.jpg' }}"
+        alt="{{ recipe.title }}"
       />
+
       <!-- Recipe information -->
       <div class="details fade-in-up-2">
         <span id="recipe-duration"
-          ><i class="fa fa-clock-o"></i> 30 minutes</span
+          ><i class="fa fa-clock-o"></i> {{ recipe.duration }} minutes</span
         >
-        <span id="recipe-difficulty"><i class="fa fa-tasks"></i> Medium</span>
+        <span id="recipe-difficulty"
+          ><i class="fa fa-tasks"></i> {{ recipe.difficulty }}</span
+        >
         <span id="recipe-calories"
-          ><i class="fa fa-fire"></i> 250 Calories</span
+          ><i class="fa fa-fire"></i> {{ recipe.calories }} Calories</span
         >
-        <span id="recipe-serving"><i class="fa fa-user"></i> 4 Servings</span>
+        <span id="recipe-serving"
+          ><i class="fa fa-user"></i> {{ recipe.servings }} Servings</span
+        >
       </div>
+
       <!-- Detail -->
       <p id="recipe-description" class="fade-in-up-4">
-        Groza adalah hidangan khas yang kaya rasa dan cocok untuk segala
-        kesempatan. Dibuat dengan bahan-bahan segar dan bumbu pilihan, resep ini
-        akan memanjakan lidah Anda.
+        {{ recipe.description }}
       </p>
 
       <!-- Ingredients -->
       <h3 class="recipe-detail-title fade-in-up-1">Bahan-bahan</h3>
       <ul id="recipe-ingredients" class="fade-in-up-2">
-        <li>200g daging ayam</li>
-        <li>100g wortel, dipotong dadu</li>
-        <li>2 siung bawang putih, cincang</li>
-        <li>1 bawang bombai, iris tipis</li>
-        <li>200ml santan</li>
-        <li>2 sdm minyak goreng</li>
-        <li>1 sdt garam</li>
-        <li>1/2 sdt merica</li>
+        <li ng-repeat="ingredient in recipe.ingredients">{{ ingredient }}</li>
       </ul>
 
       <!-- Steps -->
       <h3 class="fade-in-up-3">Langkah-langkah</h3>
       <ol id="recipe-steps" class="fade-in-up-4">
-        <li>Panaskan minyak di wajan.</li>
-        <li>Tumis bawang putih dan bawang bombai hingga harum.</li>
-        <li>Masukkan daging ayam, masak hingga berubah warna.</li>
-        <li>Tambahkan wortel, aduk rata.</li>
-        <li>Tuangkan santan, masak dengan api kecil hingga mendidih.</li>
-        <li>Bumbui dengan garam dan merica. Aduk rata.</li>
-        <li>Masak hingga semua bahan matang. Angkat dan sajikan.</li>
+        <li ng-repeat="step in recipe.steps">{{ step }}</li>
       </ol>
 
       <!-- Nutrition -->
@@ -75,26 +66,26 @@
       <table id="nutrition-table" class="fade-in-up-2">
         <tr>
           <th>Kalori</th>
-          <td id="calories">250</td>
+          <td>{{ recipe.nutrition.calories }}</td>
         </tr>
         <tr>
           <th>Karbohidrat</th>
-          <td id="carbs">20g</td>
+          <td>{{ recipe.nutrition.carbs }}</td>
         </tr>
         <tr>
           <th>Protein</th>
-          <td id="protein">15g</td>
+          <td>{{ recipe.nutrition.protein }}</td>
         </tr>
         <tr>
           <th>Lemak</th>
-          <td id="fat">10g</td>
+          <td>{{ recipe.nutrition.fat }}</td>
         </tr>
       </table>
 
       <!-- Back to recipe -->
-      <a href="recipe.html">
+      <!-- <a href="recipe.html">
         <button id="back-button" class="fade-in-up-2">Kembali ke Resep</button>
-      </a>
+      </a> -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

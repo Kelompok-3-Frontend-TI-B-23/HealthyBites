@@ -41,30 +41,13 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   }
 });
 
-// router.get('/recipe/:title', recipeController.getRecipeByTitle);
+router.get('/api/recipes/:title', recipeController.getRecipeByTitle);
 
 // Tambahkan rute di recipeRoute.js
 router.get('/', recipeController.getAllRecipes);
 
 
 // Route untuk mendapatkan resep berdasarkan recipeId
-router.get('/:recipeId', async (req, res) => {
-  try {
-    // Pastikan recipeId diparse menjadi tipe data integer
-    const recipeId = parseInt(req.params.recipeId, 10); // Menggunakan parseInt dengan basis 10
-
-    // Cari resep berdasarkan recipeId
-    const recipe = await Recipe.findOne({ recipeId: recipeId });
-
-    if (!recipe) {
-      return res.status(404).json({ message: 'Recipe not found' });
-    }
-
-    res.json(recipe); // Kembalikan data resep dalam format JSON
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server error');
-  }
-});
+router.get("/api/recipes/:recipeId", recipeController.getRecipeById);
 
 module.exports = router;

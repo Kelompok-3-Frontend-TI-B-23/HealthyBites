@@ -53,6 +53,10 @@ angular
         $scope.filterRecipes();
       }
     );
+    $scope.viewRecipe = function (recipeId) {
+      window.location.href = "/detailRecipe/" + recipeId;
+    };
+    
   });
 
 

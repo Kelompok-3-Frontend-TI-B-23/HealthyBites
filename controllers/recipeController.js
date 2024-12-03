@@ -1,5 +1,5 @@
 const Recipe = require("../models/recipeModel");
-
+const mongoose = require('mongoose');
 exports.uploadRecipe = async (req, res) => {
   try {
     // Parse resep dari form yang dikirimkan
@@ -55,21 +55,31 @@ exports.getAllRecipes = async (req, res) => {
 };
 
 
-// Controller untuk mendapatkan resep berdasarkan recipeId
 exports.getRecipeById = async (req, res) => {
   try {
-    const recipeId = parseInt(req.params.recipeId, 10); // Menggunakan parseInt dengan basis 10
+    const recipeId = req.params.recipeId;
 
-    const recipe = await Recipe.findOne({ recipeId: recipeId });
+    // Validasi apakah recipeId adalah ObjectId yang valid
+    if (!mongoose.Types.ObjectId.isValid(recipeId)) {
+      return res.status(400).json({ message: 'Invalid recipeId format' });
+    }
 
+    // Cari resep berdasarkan _id (ObjectId)
+    const recipe = await Recipe.findById(recipeId);
+
+    // Jika resep tidak ditemukan, kembalikan error
     if (!recipe) {
       return res.status(404).json({ message: 'Recipe not found' });
     }
 
-    res.json(recipe); 
+    // Jika ditemukan, kembalikan data resep
+    res.json(recipe);
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
   }
 };
+
+
+
 

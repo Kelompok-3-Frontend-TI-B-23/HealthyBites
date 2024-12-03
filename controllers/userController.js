@@ -47,8 +47,6 @@ exports.createUser = async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 };
-  
-// Login
 exports.loginUser = async (req, res) => {
     try {
         const { email, password } = req.body;
@@ -68,12 +66,20 @@ exports.loginUser = async (req, res) => {
         // Buat token JWT
         const token = jwt.sign({ userId: user._id }, SECRET_KEY, { expiresIn: '1h' });
 
-        // Kirim token dan user info
-        res.status(200).json({ message: 'Login successful', token });
+        // Cek apakah user adalah admin
+        const isAdmin = email === 'admin@gmail.com' && password === 'Admin123';
+
+        // Kirim token, info user, dan role admin jika applicable
+        res.status(200).json({
+            message: 'Login successful',
+            token,
+            isAdmin
+        });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
+
 
 // Menampilkan data user yang sedang login
 exports.getUser = async (req, res) => {

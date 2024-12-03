@@ -41,13 +41,15 @@ router.post('/upload', upload.single('image'), async (req, res) => {
   }
 });
 
-router.get('/api/recipes/:title', recipeController.getRecipeByTitle);
+router.get('/api/recipes/bytitle/:title', recipeController.getRecipeByTitle);
 
 // Tambahkan rute di recipeRoute.js
 router.get('/', recipeController.getAllRecipes);
 
 
 // Route untuk mendapatkan resep berdasarkan recipeId
-router.get("/api/recipes/:recipeId", recipeController.getRecipeById);
+router.get("/:recipeId", recipeController.getRecipeById);  // Hanya path relative
+
+
 
 module.exports = router;

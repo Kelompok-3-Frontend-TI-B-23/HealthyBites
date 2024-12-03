@@ -124,6 +124,62 @@
       </div>
     </div>
 
+    <!-- Modal untuk menampilkan detail resep -->
+    <div
+      class="modal fade"
+      id="recipeDetailModal"
+      tabindex="-1"
+      aria-labelledby="recipeDetailModalLabel"
+      aria-hidden="true"
+      ng-if="selectedRecipe"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="recipeDetailModalLabel">
+              {{ selectedRecipe.title }}
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              ng-src="{{ selectedRecipe.img || 'assets/default-recipe.jpg' }}"
+              class="img-fluid"
+              alt="{{ selectedRecipe.title }}"
+            />
+            <p><strong>Deskripsi:</strong> {{ selectedRecipe.description }}</p>
+            <p><strong>Durasi:</strong> {{ selectedRecipe.duration }} menit</p>
+            <p><strong>Kategori:</strong> {{ selectedRecipe.difficulty }}</p>
+            <p><strong>Kalori:</strong> {{ selectedRecipe.calories }} kcal</p>
+            <h5>Bahan-bahan:</h5>
+            <ul>
+              <li ng-repeat="ingredient in selectedRecipe.ingredients">
+                {{ ingredient }}
+              </li>
+            </ul>
+            <h5>Langkah-langkah:</h5>
+            <ol>
+              <li ng-repeat="step in selectedRecipe.steps">{{ step }}</li>
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   </body>

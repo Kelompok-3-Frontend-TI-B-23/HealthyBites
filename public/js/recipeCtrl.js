@@ -53,8 +53,23 @@ angular
         $scope.filterRecipes();
       }
     );
+
     $scope.viewRecipe = function (recipeId) {
-      window.location.href = "/detailRecipe/" + recipeId;
+      console.log("Selected Recipe ID:", recipeId); // Debugging: Pastikan id ini terdefinisi
+      if (!recipeId) {
+        console.error("Recipe ID is invalid!");
+        return; // Jangan lanjutkan jika recipeId tidak valid
+      }
+      $http
+        .get("/api/recipes/" + recipeId)
+        .then(function (response) {
+          $scope.selectedRecipe = response.data;
+          const modal = new bootstrap.Modal(document.getElementById('recipeDetailModal'));
+          modal.show();
+        })
+        .catch(function (error) {
+          console.error("Error fetching recipe detail:", error);
+        });
     };
     
   });
@@ -62,20 +77,4 @@ angular
 
 
 
-  // angular
-  // .module("mainApp")
-  // .controller("recipeDetailCtrl", function ($scope, $http, $routeParams) {
-  //   // Get the recipeId from the URL
-  //   const recipeId = $routeParams.recipeId;
 
-  //   // Fetch the recipe details from the server using the recipeId
-  //   $http
-  //     .get("/api/recipes/" + recipeId)
-  //     .then(function (response) {
-  //       // Store the recipe details in $scope
-  //       $scope.recipe = response.data;
-  //     })
-  //     .catch(function (error) {
-  //       console.error("Error fetching recipe detail:", error);
-  //     });
-  // });

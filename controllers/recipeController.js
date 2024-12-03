@@ -55,30 +55,34 @@ exports.getAllRecipes = async (req, res) => {
 };
 
 
+
 exports.getRecipeById = async (req, res) => {
+  
   try {
     const recipeId = req.params.recipeId;
+    console.log("Received recipeId:", recipeId); // Debugging
+    
 
-    // Validasi apakah recipeId adalah ObjectId yang valid
+    // Cek apakah recipeId adalah ObjectId yang valid
     if (!mongoose.Types.ObjectId.isValid(recipeId)) {
       return res.status(400).json({ message: 'Invalid recipeId format' });
     }
 
-    // Cari resep berdasarkan _id (ObjectId)
-    const recipe = await Recipe.findById(recipeId);
+    // Cari berdasarkan ObjectId
+    const recipe = await Recipe.findById(recipeId); 
 
-    // Jika resep tidak ditemukan, kembalikan error
     if (!recipe) {
       return res.status(404).json({ message: 'Recipe not found' });
     }
 
-    // Jika ditemukan, kembalikan data resep
-    res.json(recipe);
+    res.json(recipe);  // Mengirimkan resep yang ditemukan
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
   }
 };
+
+
 
 
 

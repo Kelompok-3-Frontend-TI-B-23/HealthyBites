@@ -28,6 +28,10 @@ router.get('/', recipeController.getAllRecipes);
 // Route untuk mendapatkan resep berdasarkan recipeId
 router.get("/:recipeId", recipeController.getRecipeById); 
 
+// Route untuk mengupdate resep
+router.put('/:recipeId', recipeController.updateRecipe);
 
+// Route untuk menghapus resep
+router.delete('/:recipeId', recipeController.deleteRecipe);
 
 module.exports = router;

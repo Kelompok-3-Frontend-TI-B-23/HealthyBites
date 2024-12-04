@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <title>Edit or Delete Recipe</title>
+  </head>
+  <body ng-controller="editRecipeCtrl">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary px-4"
+      style="width: 100%"
+    >
+      <div class="container-fluid">
+        <a style="color: #16542a" class="navbar-brand fw-bold" href="#"
+          >Admin Dashboard</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <div class="d-flex align-items-center">
+            <button
+              class="btn btn-sm btn-outline-success"
+              style="color: #16542a; border-color: #16542a"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container my-5">
+      <h1 class="text-center mb-4" style="color: #16542a">Manage Recipes</h1>
+      <div class="row">
+        <!-- Recipe List -->
+        <div class="col-md-12">
+          <div class="card mb-3" ng-repeat="recipe in recipes">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <h5 class="card-title">{{ recipe.title }}</h5>
+                  <img
+                    ng-src="{{ recipe.img }}"
+                    alt="{{ recipe.title }}"
+                    class="img-fluid"
+                    style="max-width: 200px; height: auto"
+                  />
+                </div>
+                <div>
+                  <button
+                    class="btn btn-warning"
+                    ng-click="openEditPopup(recipe)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn btn-danger"
+                    ng-click="openDeletePopup(recipe)"
+                  >
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Recipe Modal -->
+    <div class="modal" tabindex="-1" id="editRecipeModal" style="display: none">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Edit Recipe</h5>
+            <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            ng-click="closeEditPopup()"
+          ></button>
+            </div>
+            <div class="modal-body">
+            <form id="editRecipeForm" ng-submit="updateRecipe()">
+                <div class="form-group">
+                <label for="title">Nama:</label>
+                <input type="text" id="title" class="form-control" ng-model="selectedRecipe.title" required />
+                </div>
+    
+                <div class="form-group">
+                <label for="duration">Durasi (menit):</label>
+                <input type="number" id="duration" class="form-control" ng-model="selectedRecipe.duration" required />
+                </div>
+    
+                <div class="form-group">
+                <label for="difficulty">Kesulitan:</label>
+                <select id="difficulty" class="form-select" ng-model="selectedRecipe.difficulty" required>
+                    <option value="Mudah">Mudah</option>
+                    <option value="Sedang">Sedang</option>
+                    <option value="Sulit">Sulit</option>
+                </select>
+                </div>
+    
+                <div class="form-group">
+                <label for="image">Gambar:</label>
+                <input type="file" id="image" class="form-control" accept="image/*" />
+                <!-- Tambahkan logika untuk memuat gambar saat diubah -->
+                </div>
+    
+                <div class="form-group">
+                <label for="description">Deskripsi:</label>
+                <textarea id="description" class="form-control" ng-model="selectedRecipe.description" required></textarea>
+                </div>
+    
+                <div class="form-group">
+                <label for="calories">Kalori:</label>
+                <input type="number" id="calories" class="form-control" ng-model="selectedRecipe.calories" required />
+                </div>
+    
+                <div class="form-group">
+                <label for="serving">Porsi:</label>
+                <input type="number" id="serving" class="form-control" ng-model="selectedRecipe.serving" required />
+                </div>
+    
+                <div class="form-group">
+                <label for="ingredients">Bahan (pisahkan dengan titik):</label>
+                <textarea id="ingredients" class="form-control" ng-model="selectedRecipe.ingredients" required></textarea>
+                </div>
+    
+                <div class="form-group">
+                <label for="steps">Langkah-langkah (pisahkan dengan titik):</label>
+                <textarea id="steps" class="form-control" ng-model="selectedRecipe.steps" required></textarea>
+                </div>
+    
+                <div class="form-group">
+                <label for="nutritionCalories">Kalori Gizi:</label>
+                <input type="number" id="nutritionCalories" class="form-control" ng-model="selectedRecipe.nutritionCalories" required />
+                </div>
+    
+                <div class="form-group">
+                <label for="nutritionCarbs">Karbohidrat:</label>
+                <input type="number" id="nutritionCarbs" class="form-control" ng-model="selectedRecipe.nutritionCarbs" required />
+                </div>
+    
+                <div class="form-group">
+                <label for="nutritionProtein">Protein:</label>
+                <input type="number" id="nutritionProtein" class="form-control" ng-model="selectedRecipe.nutritionProtein" required />
+                </div>
+    
+                <div class="form-group">
+                <label for="nutritionFat">Lemak:</label>
+                <input type="number" id="nutritionFat" class="form-control" ng-model="selectedRecipe.nutritionFat" required />
+                </div>
+    
+                <div class="form-group">
+                <button type="submit" class="btn btn-success">Save Changes</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+
+    <!-- Delete Recipe Confirmation Popup -->
+    <div class="modal" tabindex="-1" id="deleteRecipeModal" style="display: none">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Delete Recipe</h5>
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+                ng-click="closeDeletePopup()"
+            ></button>
+            </div>
+            <div class="modal-body">
+            <p>Are you sure you want to delete the recipe: <strong>{{ selectedRecipe.title }}</strong>?</p>
+            <button class="btn btn-danger" ng-click="deleteRecipe()">
+                Delete
+            </button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal" ng-click="closeDeletePopup()">
+                Cancel
+            </button>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+  
+    </div>
+  </body>
+</html>

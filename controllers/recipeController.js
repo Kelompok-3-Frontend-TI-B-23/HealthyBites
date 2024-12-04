@@ -27,7 +27,7 @@ exports.uploadRecipe = [
 
       // Periksa jika ada file gambar
       if (req.file) {
-        recipe.img = `/uploads/${req.file.filename}`; // Simpan path file
+        recipe.img = `/uploads/${req.file.filename}`; 
       }
 
       // Simpan data ke MongoDB
@@ -71,6 +71,47 @@ exports.getAllRecipes = async (req, res) => {
   }
 };
 
+// Controller untuk memperbarui resep
+exports.updateRecipe = async (req, res) => {
+  try {
+    const recipeId = req.params.recipeId;
+    if (!mongoose.Types.ObjectId.isValid(recipeId)) {
+      return res.status(400).json({ message: 'Invalid recipeId format' });
+    }
+
+    const updatedRecipe = await Recipe.findByIdAndUpdate(recipeId, req.body, { new: true });
+
+    if (!updatedRecipe) {
+      return res.status(404).json({ message: 'Recipe not found' });
+    }
+
+    res.json(updatedRecipe);
+  } catch (error) {
+    console.error('Error updating recipe:', error);
+    res.status(500).json({ message: 'Error updating recipe', error });
+  }
+};
+
+// Controller untuk menghapus resep
+exports.deleteRecipe = async (req, res) => {
+  try {
+    const recipeId = req.params.recipeId;
+    if (!mongoose.Types.ObjectId.isValid(recipeId)) {
+      return res.status(400).json({ message: 'Invalid recipeId format' });
+    }
+
+    const deletedRecipe = await Recipe.findByIdAndDelete(recipeId);
+
+    if (!deletedRecipe) {
+      return res.status(404).json({ message: 'Recipe not found' });
+    }
+
+    res.json({ message: 'Recipe deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting recipe:', error);
+    res.status(500).json({ message: 'Error deleting recipe', error });
+  }
+};
 
 
 exports.getRecipeById = async (req, res) => {

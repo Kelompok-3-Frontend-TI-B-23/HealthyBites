@@ -26,6 +26,6 @@ angular.module('mainApp')
         $scope.idealWeightResult = `Berat badan ideal Anda adalah ${(21 * Math.pow(heightInMeters, 2)).toFixed(1)} kg.`;
       } else {
         $scope.idealWeightResult = 'Jenis kelamin tidak valid!';
-      }
-    };
-  }]);
+      }
+    };
+  }]);

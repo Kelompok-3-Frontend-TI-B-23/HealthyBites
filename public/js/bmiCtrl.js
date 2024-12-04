@@ -46,5 +46,5 @@ angular.module('mainApp').controller('bmiCtrl', ['$scope', function ($scope) {
 
     const modal = new bootstrap.Modal(document.getElementById('bmiModal'));
     modal.show();
-  };
+  };
 }]);

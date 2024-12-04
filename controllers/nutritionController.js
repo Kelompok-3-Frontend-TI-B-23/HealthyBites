@@ -1,6 +1,7 @@
 const Nutrition = require("../models/nutritionModel");
 const mongoose = require('mongoose');
 const multer = require('multer');
+const path = require('path');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -8,11 +9,11 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, file.fieldname + '-' + uniqueSuffix + '.' + file.originalname.split('.').pop());
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname));
   }
 });
 
-const upload = multer({ 
+const upload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
     const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
@@ -26,58 +27,45 @@ const upload = multer({
 });
 
 exports.uploadNutrition = [
-  upload.single('image'), 
+  upload.single('image'),
   async (req, res) => {
     try {
-      const nutritionInfo = {
+      const nutrition = {
         title: req.body.title,
-        description: req.body.description,
         calories: req.body.calories,
-        protein: req.body.protein,
-        carbs: req.body.carbs,
         fat: req.body.fat,
+        saturatedFat: req.body.saturatedFat,
+        protein: req.body.protein,
+        cholesterol: req.body.cholesterol,
+        sodium: req.body.sodium,
+        funFacts: req.body.funFacts.split(','),
       };
 
       if (req.file) {
-        nutritionInfo.img = `/uploads/${req.file.filename}`;
+        nutrition.image = `/uploads/${req.file.filename}`;
       }
 
-      const newNutrition = new Nutrition(nutritionInfo);
+      const newNutrition = new Nutrition(nutrition);
       await newNutrition.save();
 
-      res.status(201).json({
-        message: 'Nutrition info uploaded successfully!',
-        nutrition: newNutrition,
-      });
+      res.status(201).json({ message: 'Nutrition info uploaded successfully!', nutrition: newNutrition });
     } catch (error) {
-      console.error('Error uploading nutrition info:', error);
-      res.status(500).json({ message: 'Error uploading nutrition info', error });
+      console.error('Error uploading nutrition:', error);
+      res.status(500).json({ message: 'Error uploading nutrition', error });
     }
-  },
-];
-
-exports.getNutritionByTitle = async (req, res) => {
-  try {
-      const nutrition = await Nutrition.findOne({ title: req.params.title }); 
-      if (!nutrition) {
-          return res.status(404).json({ msg: 'Nutrition info not found' });
-      }
-      res.json(nutrition); 
-  } catch (err) {
-      console.error(err);
-      res.status(500).send('Server error');
   }
-};
+];
 
 exports.getAllNutrition = async (req, res) => {
   try {
-    const nutritionInfo = await Nutrition.find();
-    res.json(nutritionInfo); 
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Server error');
+    const nutritionData = await Nutrition.find();
+    res.json(nutritionData);
+  } catch (error) {
+    console.error('Error fetching nutrition data:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 };
+
 
 exports.updateNutrition = async (req, res) => {
   try {

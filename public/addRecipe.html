@@ -8,14 +8,18 @@
       href="https://fonts.googleapis.com/css2?family=Capriola&family=Carter+One&family=Original+Surfer&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/addRecipe.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <link rel="stylesheet" href="css/addRecipe.css" />
   </head>
-  <body>
+  <body ng-app="mainApp" ng-controller="addRecipeCtrl">
     <!-- Form Wrapper -->
     <div class="form-wrapper">
       <h1 class="form-title">Tambah Resep</h1>
-      <form id="addRecipeForm" enctype="multipart/form-data">
+      <form
+        id="addRecipeForm"
+        enctype="multipart/form-data"
+        ng-submit="submitForm()"
+        novalidate
+      >
         <div class="form-group">
           <label for="title">Nama:</label>
           <input type="text" id="title" name="title" required />
@@ -111,56 +115,5 @@
         </div>
       </form>
     </div>
-
-    <script>
-      document
-        .getElementById("addRecipeForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          const form = new FormData(e.target);
-
-          // Parse JSON fields
-          const ingredients = form
-            .get("ingredients")
-            .split(".")
-            .map((item) => item.trim());
-          const steps = form
-            .get("steps")
-            .split(".")
-            .map((item) => item.trim());
-
-          // Create Recipe object
-          const recipe = {
-            title: form.get("title"),
-            duration: form.get("duration"),
-            difficulty: form.get("difficulty"),
-            description: form.get("description"),
-            calories: form.get("calories"),
-            serving: form.get("serving"),
-            ingredients,
-            steps,
-            nutrition: {
-              calories: form.get("nutritionCalories"),
-              carbs: form.get("nutritionCarbs"),
-              protein: form.get("nutritionProtein"),
-              fat: form.get("nutritionFat"),
-            },
-          };
-
-          form.append("recipe", JSON.stringify(recipe));
-
-          try {
-            const response = await fetch("/api/recipes/upload", {
-              method: "POST",
-              body: form,
-            });
-            const data = await response.json();
-            alert(data.message);
-          } catch (error) {
-            console.error("Error:", error);
-          }
-        });
-    </script>
   </body>
 </html>

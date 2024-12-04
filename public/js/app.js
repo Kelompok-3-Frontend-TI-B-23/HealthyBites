@@ -20,18 +20,15 @@ angular.module('mainApp', ['ngRoute'])
       templateUrl: 'login.html',  // Halaman login
       controller: 'loginCtrl'
     })
-    .when('/addRecipe', {
+    .when('/dashboardAdmin', {
       templateUrl: 'addRecipe.html',  // Halaman untuk menambahkan resep baru
       controller: 'addRecipeCtrl'
     })
-    .when('/dashboardAdmin', {
-      templateUrl: 'dashboardAdmin.html',
-      controller: ''
-    })
-    .when('/detailRecipe/:recipeId', {
-        templateUrl: 'recipeDetail.html', 
-        controller: 'recipeDetailCtrl' 
-    });
+    // .when('/dashboardAdmin', {
+    //   templateUrl: 'dashboardAdmin.html',
+    //   controller: ''
+    // })
+
 
 });
 

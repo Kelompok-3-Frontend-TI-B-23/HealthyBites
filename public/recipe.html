@@ -149,13 +149,14 @@
           <div class="modal-body">
             <img
               ng-src="{{ selectedRecipe.img || 'assets/default-recipe.jpg' }}"
-              class="img-fluid"
+              class="img-fluid my-2"
               alt="{{ selectedRecipe.title }}"
             />
             <p><strong>Deskripsi:</strong> {{ selectedRecipe.description }}</p>
             <p><strong>Durasi:</strong> {{ selectedRecipe.duration }} menit</p>
             <p><strong>Kategori:</strong> {{ selectedRecipe.difficulty }}</p>
             <p><strong>Kalori:</strong> {{ selectedRecipe.calories }} kcal</p>
+            <p><strong>Jumlah Serving:</strong> {{ selectedRecipe.serving }}</p>
             <h5>Bahan-bahan:</h5>
             <ul>
               <li ng-repeat="ingredient in selectedRecipe.ingredients">
@@ -166,11 +167,25 @@
             <ol>
               <li ng-repeat="step in selectedRecipe.steps">{{ step }}</li>
             </ol>
+            <h5>Informasi Nutrisi:</h5>
+            <ul>
+              <li>
+                <strong>Karbohidrat:</strong> {{ selectedRecipe.nutrition.carbs
+                }} g
+              </li>
+              <li>
+                <strong>Protein:</strong> {{ selectedRecipe.nutrition.protein }}
+                g
+              </li>
+              <li>
+                <strong>Lemak:</strong> {{ selectedRecipe.nutrition.fat }} g
+              </li>
+            </ul>
           </div>
           <div class="modal-footer">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-success"
               data-bs-dismiss="modal"
             >
               Tutup

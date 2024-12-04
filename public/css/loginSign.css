@@ -5,8 +5,10 @@
   --darker-green: #0a3d23;
   --brown: #955306;
   --yellow: #f3c430;
+  --crean: #ffffec;
+  --green: #68902b;
+  --light-green: #9bbc43;
 }
-
 /* General Styling */
 body {
   font-family: "Capriola", sans-serif;
@@ -98,7 +100,7 @@ body {
 }
 
 .btn-submit:hover {
-  background-color: #007a39;
+  background-color: var(--darker-green);
 }
 
 /* Signup Link */

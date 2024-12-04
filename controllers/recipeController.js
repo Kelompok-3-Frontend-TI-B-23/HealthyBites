@@ -1,7 +1,30 @@
 const Recipe = require("../models/recipeModel");
 const mongoose = require('mongoose');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' }); // Folder penyimpanan file
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/uploads/');
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + '.' + file.originalname.split('.').pop());
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!allowedTypes.includes(file.mimetype)) {
+      const error = new Error('Only images are allowed');
+      error.code = 'LIMIT_FILE_TYPES';
+      return cb(error, false);
+    }
+    cb(null, true);
+  }
+});
+
 
 exports.uploadRecipe = [
   upload.single('image'), // Untuk menangani file gambar

@@ -31,6 +31,14 @@ angular.module('mainApp', ['ngRoute'])
     .when('/editRecipe', {
       templateUrl: 'editRecipe.html', // Halaman edit dan delet resep
       controller: 'editRecipeCtrl'
+    })
+    .when('/bmi', {
+      templateUrl: 'bmi.html', // Halaman edit dan delet resep
+      controller: 'bmiCtrl'
+    })
+    .when('/bbi', {
+      templateUrl: 'bbi.html', // Halaman edit dan delet resep
+      controller: 'bbiCtrl'
     });
 
 }).run(function($rootScope, $location) {

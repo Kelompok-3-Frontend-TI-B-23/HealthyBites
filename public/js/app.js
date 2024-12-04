@@ -31,7 +31,12 @@ angular.module('mainApp', ['ngRoute'])
     .when('/editRecipe', {
       templateUrl: 'editRecipe.html', // Halaman edit dan delet resep
       controller: 'editRecipeCtrl'
-    });
+    })
+    .when('/berita', {
+      templateUrl: 'berita.html', // Halaman edit dan delet resep
+      controller: 'newsCtrl'
+    })
+    ;
 
 }).run(function($rootScope, $location) {
   // Create a $rootScope variable to track background image status

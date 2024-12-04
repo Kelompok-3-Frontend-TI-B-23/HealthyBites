@@ -7,6 +7,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const imageRoute = require("./routes/imageRoute");
 const recipeRoutes = require("./routes/recipeRoute");
+const newsRoutes = require("./routes/newsRoute");
 const multer = require('multer');
 const upload = multer({ dest: 'public/uploads/' }); 
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 // rute api untuk resep
 app.use("/api/recipes", recipeRoutes); 
 app.use('/api/users', userRoutes);
+app.use('/api/news', newsRoutes);
 app.use("/api/images", imageRoute);
 app.use("/uploads", express.static("public/uploads")); // Folder untuk gambar
 

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Nutrition</title>
+    <link rel="stylesheet" href="css/addRecipe.css" />
+  </head>
+  <body ng-app="mainApp" ng-controller="addNutritionCtrl">
+    <div class="form-wrapper">
+      <h1 class="form-title">Tambah Nutrisi</h1>
+      <form id="addNutritionForm" enctype="multipart/form-data" ng-submit="submitForm()" novalidate>
+        <div class="form-group">
+          <label for="title">Nama:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="description">Deskripsi:</label>
+          <textarea id="description" name="description" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="calories">Kalori:</label>
+          <input type="number" id="calories" name="calories" required />
+        </div>
+
+        <div class="form-group">
+          <label for="protein">Protein:</label>
+          <input type="number" id="protein" name="protein" required />
+        </div>
+
+        <div class="form-group">
+          <label for="carbs">Karbohidrat:</label>
+          <input type="number" id="carbs" name="carbs" required />
+        </div>
+
+        <div class="form-group">
+          <label for="fat">Lemak:</label>
+          <input type="number" id="fat" name="fat" required />
+        </div>
+
+        <div class="form-group">
+          <label for="image">Gambar:</label>
+          <input type="file" id="image" name="image" accept="image/*" required />
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn-submit">Tambah Nutrisi</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

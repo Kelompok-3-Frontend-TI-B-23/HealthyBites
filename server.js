@@ -9,7 +9,7 @@ const imageRoute = require("./routes/imageRoute");
 const recipeRoutes = require("./routes/recipeRoute");
 const multer = require('multer');
 const upload = multer({ dest: 'public/uploads/' }); 
-
+const nutritionRoutes = require('./routes/nutritionRoute');
 require('dotenv').config();
 
 app.use(express.json());
@@ -21,6 +21,7 @@ app.use(bodyParser.json());
 app.use("/api/recipes", recipeRoutes); 
 app.use('/api/users', userRoutes);
 app.use("/api/images", imageRoute);
+app.use("/api/nutrition", nutritionRoutes);
 app.use("/uploads", express.static("public/uploads")); // Folder untuk gambar
 
 app.get('*', (req, res) => {

@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Capriola&family=Carter+One&family=Original+Surfer&display=swap');
 
-:root {
+:root{
   --dark-green: #16542a;
   --darker-green: #0a3d23;
   --brown: #955306;
   --yellow: #f3c430;
-}
+  --crean: #ffffec;
+  --green: #68902b;
+  --light-green: #9bbc43;
+  }
 
 /* General Styling */
 body {

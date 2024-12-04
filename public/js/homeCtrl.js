@@ -4,7 +4,7 @@ angular.module('mainApp').controller('homeCtrl', function ($scope, $http, $locat
 
   const token = localStorage.getItem('authToken');
   if (!token) {
-    // Mengalihkan ke halaman login jika token tidak ada
+    // ke halaman login jika token tidak ada
     $location.path('/login');
     return;
   }
@@ -21,13 +21,14 @@ angular.module('mainApp').controller('homeCtrl', function ($scope, $http, $locat
   .catch(function (error) {
     console.error('Error fetching user data:', error);
     $scope.errorMessage = error.data.error || 'Failed to fetch user data.';
-    // Mengalihkan ke halaman login jika gagal mendapatkan data
+    // ke halaman login jika gagal mendapatkan data
     $location.path('/login');
   });
 
-  $scope.logout = function () {
-    // Menghapus token dan mengalihkan pengguna ke halaman login
+
+  $scope.confirmLogout = function () {
     localStorage.removeItem('authToken');
     $location.path('/login');
   };
+  
 });

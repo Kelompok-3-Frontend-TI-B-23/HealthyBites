@@ -14,14 +14,16 @@ body {
   font-family: "Capriola", sans-serif;
   font-weight: 400;
   font-style: normal;
+  margin: 0;
+}
+
+.background-image {
   background-image: url('../assets/background/back2.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin: 0;
 }
-
 /* Login Wrapper */
 #login-page {
   font-family: "Capriola", sans-serif;
@@ -113,3 +115,10 @@ body {
 .form-link a:hover {
   text-decoration: underline;
 }
+
+
+
+
+
+
+

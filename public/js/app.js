@@ -9,9 +9,9 @@ angular.module('mainApp', ['ngRoute'])
       controller: 'createAccountCtrl'
     })
     .when('/home', {
-        templateUrl: 'home.html',  // Halaman utama (home)
-        controller: 'homeCtrl'
-      })
+      templateUrl: 'home.html',  // Halaman utama (home)
+      controller: 'homeCtrl'
+    })
     .when('/recipe', {
       templateUrl: 'recipe.html',  // Halaman untuk menampilkan semua resep
       controller: 'recipeCtrl'
@@ -23,14 +23,19 @@ angular.module('mainApp', ['ngRoute'])
     .when('/dashboardAdmin', {
       templateUrl: 'addRecipe.html',  // Halaman untuk menambahkan resep baru
       controller: 'addRecipeCtrl'
-    })
-    // .when('/dashboardAdmin', {
-    //   templateUrl: 'dashboardAdmin.html',
-    //   controller: ''
-    // })
+    });
+})
+.run(function($rootScope, $location) {
+  // Create a $rootScope variable to track background image status
+  $rootScope.backgroundImageClass = '';
 
-
+  // Listen to route changes
+  $rootScope.$on('$routeChangeStart', function() {
+    // Set the background image class based on the path
+    if ($location.path() === '/home') {
+      $rootScope.backgroundImageClass = '';
+    } else {
+      $rootScope.backgroundImageClass = 'background-image';
+    }
+  });
 });
-
-
-

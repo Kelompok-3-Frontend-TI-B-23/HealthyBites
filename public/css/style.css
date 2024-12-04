@@ -5,7 +5,10 @@
     --brown:  #955306;
     --yellow:  #f3c430;
 }
-
+body {
+    background-image: none;
+}
+/*  */
 /* custom warna text */
 .dark-green-text {
     color: var(--dark-green);

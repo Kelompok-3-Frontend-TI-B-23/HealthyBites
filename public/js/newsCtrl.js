@@ -1,5 +1,5 @@
 angular
-  .module("newsApp", [])
+  .module("mainApp")
   .controller("newsCtrl", function ($scope, $http) {
     // Ambil semua berita dari server
     $http
@@ -7,6 +7,7 @@ angular
       .then(function (response) {
         // Simpan data berita yang diterima di $scope
         $scope.newsList = response.data;
+        console.log($scope.newsList);
       })
       .catch(function (error) {
         console.error("Error fetching news:", error);

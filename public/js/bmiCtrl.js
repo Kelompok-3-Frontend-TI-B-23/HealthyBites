@@ -1,4 +1,4 @@
-angular.module('mainApp', []).controller('bmiCtrl', ['$scope', function ($scope) {
+angular.module('mainApp').controller('bmiCtrl', ['$scope', function ($scope) {
   $scope.user = {
     age: null,
     gender: '',

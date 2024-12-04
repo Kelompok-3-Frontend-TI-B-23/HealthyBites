@@ -1,4 +1,4 @@
-angular.module('bbiApp', [])
+angular.module('mainApp')
   .controller('bbiCtrl', ['$scope', function ($scope) {
     // Initialize user object and result variable
     $scope.user = {

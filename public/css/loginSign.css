@@ -5,41 +5,58 @@
   --darker-green: #0a3d23;
   --brown: #955306;
   --yellow: #f3c430;
+  --crean: #ffffec;
+  --green: #68902b;
+  --light-green: #9bbc43;
 }
-
 /* General Styling */
 body {
   font-family: "Capriola", sans-serif;
   font-weight: 400;
   font-style: normal;
+  margin: 0;
+}
+
+.background-image {
+  background-image: url('../assets/background/back2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+/* Login Wrapper */
+#login-page {
+  font-family: "Capriola", sans-serif;
+  font-weight: 400;
   background-image: url('../assets/background/back2.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-  height: 100vh;
 }
 
-/* Form Wrapper */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure full height for centering */
+}
+
 .form-wrapper {
   background: #ffffff;
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px; 
-  width: 100%; 
+  max-width: 400px;
+  width: 100%;
 }
 
 .form-title {
   text-align: center;
   font-size: 24px;
   font-weight: 900;
-  color: var(--dark-green); 
+  color: var(--dark-green);
   margin-bottom: 20px;
 }
 
@@ -61,7 +78,7 @@ body {
 
 .form-group input:focus {
   border-color: var(--dark-green);
-  box-shadow: 0 0 4px rgba(22, 84, 42, 0.4); 
+  box-shadow: 0 0 4px rgba(22, 84, 42, 0.4);
   outline: none;
 }
 
@@ -74,7 +91,7 @@ body {
 
 /* Submit Button */
 .btn-submit {
-  background-color: var(--dark-green); 
+  background-color: var(--dark-green);
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -85,7 +102,7 @@ body {
 }
 
 .btn-submit:hover {
-  background-color: #007a39;
+  background-color: var(--darker-green);
 }
 
 /* Signup Link */
@@ -98,3 +115,10 @@ body {
 .form-link a:hover {
   text-decoration: underline;
 }
+
+
+
+
+
+
+

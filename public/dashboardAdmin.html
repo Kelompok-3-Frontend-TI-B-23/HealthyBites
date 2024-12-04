@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <title>Admin Dashboard</title>
+  </head>
+  <body ng-controller="homeCtrl">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary px-4"
+      style="width: 100%"
+    >
+      <div class="container-fluid">
+        <a style="color: #16542a" class="navbar-brand fw-bold" href="#"
+          >Admin Dashboard</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <div class="d-flex align-items-center">
+            <button
+              class="btn btn-sm btn-outline-success"
+              style="color: #16542a; border-color: #16542a"
+              data-bs-toggle="modal"
+              data-bs-target="#logoutModal"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container my-5">
+      <h1 class="text-center mb-4" style="color: #16542a">Admin Options</h1>
+      <div class="row">
+        <!-- Recipe Section -->
+        <div class="col-md-6">
+          <h3 class="text-center mb-3" style="color: #16542a">
+            Manage Recipes
+          </h3>
+
+          <!-- Add Recipe -->
+          <div class="card mb-3">
+            <div class="card-header">Add Recipe</div>
+            <div class="card-body text-center">
+              <p class="card-text">Create and manage recipes for users.</p>
+              <a ng-href="/addRecipe" class="btn btn-add">Add Recipe</a>
+            </div>
+          </div>
+
+          <!-- Edit and Delete Recipe -->
+          <div class="card mb-3">
+            <div class="card-header">Edit or Delete Recipe</div>
+            <div class="card-body text-center">
+              <p class="card-text">
+                Update or remove recipes that are no longer needed.
+              </p>
+              <a ng-href="/editRecipe" class="btn btn-edit"
+                >Edit or Delete Recipe</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Nutrition Section -->
+        <div class="col-md-6">
+          <h3 class="text-center mb-3" style="color: #16542a">
+            Manage Nutrition
+          </h3>
+
+          <!-- Add Nutrition -->
+          <div class="card mb-3">
+            <div class="card-header">Add Nutrition</div>
+            <div class="card-body text-center">
+              <p class="card-text">Add nutritional data for food items.</p>
+              <a ng-href="/addNutrition" class="btn btn-add">Add Nutrition</a>
+            </div>
+          </div>
+
+          <!-- Edit and Delete Nutrition -->
+          <div class="card mb-3">
+            <div class="card-header">Edit or Delete Nutrition</div>
+            <div class="card-body text-center">
+              <p class="card-text">
+                Update or remove nutritional data that is no longer needed.
+              </p>
+              <a ng-href="/editNutrition" class="btn btn-edit"
+                >Edit or Delete Nutrition</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      aria-labelledby="logoutModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Apakah Anda yakin ingin logout?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              ng-click="confirmLogout()"
+              data-bs-dismiss="modal"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

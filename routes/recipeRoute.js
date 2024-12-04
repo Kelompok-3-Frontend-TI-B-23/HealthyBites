@@ -3,8 +3,9 @@ const router = express.Router();
 const multer = require('multer');
 const Recipe = require('../models/recipeModel');
 const path = require('path');
-
+const recipeController = require('../controllers/recipeController');
 // Konfigurasi multer untuk menyimpan gambar
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'public/uploads/'); // Menyimpan gambar di folder public/uploads
@@ -18,27 +19,19 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Rute untuk upload resep
-router.post('/upload', upload.single('image'), async (req, res) => {
-  try {
-    const recipe = JSON.parse(req.body.recipe);
+router.post('/upload', recipeController.uploadRecipe);
 
-    // Menambahkan path gambar ke dalam data resep
-    if (req.file) {
-      recipe.img = `/uploads/${req.file.filename}`;
-    }
+router.get('/api/recipes/bytitle/:title', recipeController.getRecipeByTitle);
 
-    // Simpan resep ke dalam MongoDB
-    const newRecipe = new Recipe(recipe);
-    await newRecipe.save();
+router.get('/', recipeController.getAllRecipes);
 
-    res.status(201).json({
-      message: 'Recipe uploaded successfully!',
-      recipe: newRecipe,
-    });
-  } catch (error) {
-    console.error('Error uploading recipe:', error);
-    res.status(500).json({ message: 'Error uploading recipe', error });
-  }
-});
+// Route untuk mendapatkan resep berdasarkan recipeId
+router.get("/:recipeId", recipeController.getRecipeById); 
+
+// Route untuk mengupdate resep
+router.put('/:recipeId', recipeController.updateRecipe);
+
+// Route untuk menghapus resep
+router.delete('/:recipeId', recipeController.deleteRecipe);
 
 module.exports = router;

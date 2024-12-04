@@ -8,35 +8,39 @@
       href="https://fonts.googleapis.com/css2?family=Capriola&family=Carter+One&family=Original+Surfer&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/addRecipe.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+    <link rel="stylesheet" href="css/addRecipe.css" />
   </head>
-  <body>
+  <body ng-app="mainApp" ng-controller="addRecipeCtrl">
     <!-- Form Wrapper -->
     <div class="form-wrapper">
-      <h1 class="form-title">Add Recipe</h1>
-      <form id="addRecipeForm" enctype="multipart/form-data">
+      <h1 class="form-title">Tambah Resep</h1>
+      <form
+        id="addRecipeForm"
+        enctype="multipart/form-data"
+        ng-submit="submitForm()"
+        novalidate
+      >
         <div class="form-group">
-          <label for="title">Title:</label>
+          <label for="title">Nama:</label>
           <input type="text" id="title" name="title" required />
         </div>
 
         <div class="form-group">
-          <label for="duration">Duration (minutes):</label>
+          <label for="duration">Durasi (menit):</label>
           <input type="number" id="duration" name="duration" required />
         </div>
 
         <div class="form-group">
-          <label for="difficulty">Difficulty:</label>
+          <label for="difficulty">Kesulitan:</label>
           <select id="difficulty" name="difficulty" required>
-            <option value="Easy">Easy</option>
-            <option value="Medium">Medium</option>
-            <option value="Hard">Hard</option>
+            <option value="Mudah">Mudah</option>
+            <option value="Sedang">Sedang</option>
+            <option value="Sulit">Sulit</option>
           </select>
         </div>
 
         <div class="form-group">
-          <label for="image">Image:</label>
+          <label for="image">Gambar:</label>
           <input
             type="file"
             id="image"
@@ -47,32 +51,32 @@
         </div>
 
         <div class="form-group">
-          <label for="description">Description:</label>
+          <label for="description">Deskripsi:</label>
           <textarea id="description" name="description" required></textarea>
         </div>
 
         <div class="form-group">
-          <label for="calories">Calories:</label>
+          <label for="calories">Kalori:</label>
           <input type="number" id="calories" name="calories" required />
         </div>
 
         <div class="form-group">
-          <label for="serving">Serving:</label>
+          <label for="serving">Porsi:</label>
           <input type="number" id="serving" name="serving" required />
         </div>
 
         <div class="form-group">
-          <label for="ingredients">Ingredients (comma-separated):</label>
+          <label for="ingredients">Bahan (pisahkan dengan titik):</label>
           <textarea id="ingredients" name="ingredients" required></textarea>
         </div>
 
         <div class="form-group">
-          <label for="steps">Steps (comma-separated):</label>
+          <label for="steps">Langkah-langkah (pisahkan dengan titik):</label>
           <textarea id="steps" name="steps" required></textarea>
         </div>
 
         <div class="form-group">
-          <label for="nutritionCalories">Nutrition Calories:</label>
+          <label for="nutritionCalories">Kalori Gizi:</label>
           <input
             type="number"
             id="nutritionCalories"
@@ -82,7 +86,7 @@
         </div>
 
         <div class="form-group">
-          <label for="nutritionCarbs">Carbs:</label>
+          <label for="nutritionCarbs">Karbohidrat:</label>
           <input
             type="number"
             id="nutritionCarbs"
@@ -102,65 +106,14 @@
         </div>
 
         <div class="form-group">
-          <label for="nutritionFat">Fat:</label>
+          <label for="nutritionFat">Lemak:</label>
           <input type="number" id="nutritionFat" name="nutritionFat" required />
         </div>
 
         <div class="form-group">
-          <button type="submit" class="btn-submit">Add Recipe</button>
+          <button type="submit" class="btn-submit">Tambah Resep</button>
         </div>
       </form>
     </div>
-
-    <script>
-      document
-        .getElementById("addRecipeForm")
-        .addEventListener("submit", async (e) => {
-          e.preventDefault();
-
-          const form = new FormData(e.target);
-
-          // Parse JSON fields
-          const ingredients = form
-            .get("ingredients")
-            .split(",")
-            .map((item) => item.trim());
-          const steps = form
-            .get("steps")
-            .split(",")
-            .map((item) => item.trim());
-
-          // Create Recipe object
-          const recipe = {
-            title: form.get("title"),
-            duration: form.get("duration"),
-            difficulty: form.get("difficulty"),
-            description: form.get("description"),
-            calories: form.get("calories"),
-            serving: form.get("serving"),
-            ingredients,
-            steps,
-            nutrition: {
-              calories: form.get("nutritionCalories"),
-              carbs: form.get("nutritionCarbs"),
-              protein: form.get("nutritionProtein"),
-              fat: form.get("nutritionFat"),
-            },
-          };
-
-          form.append("recipe", JSON.stringify(recipe));
-
-          try {
-            const response = await fetch("/api/recipes/upload", {
-              method: "POST",
-              body: form,
-            });
-            const data = await response.json();
-            alert(data.message);
-          } catch (error) {
-            console.error("Error:", error);
-          }
-        });
-    </script>
   </body>
 </html>

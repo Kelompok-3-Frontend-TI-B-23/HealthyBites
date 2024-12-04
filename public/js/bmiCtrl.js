@@ -1,5 +1,4 @@
-// BMI Controller
-angular.module('bmiApp', []).controller('bmiCtrl', ['$scope', function ($scope) {
+angular.module('mainApp', []).controller('bmiCtrl', ['$scope', function ($scope) {
   $scope.user = {
     age: null,
     gender: '',
@@ -11,12 +10,9 @@ angular.module('bmiApp', []).controller('bmiCtrl', ['$scope', function ($scope) 
   $scope.bmiClassification = null;
 
   $scope.calculateBMI = function (event) {
-    if (event) {
-      event.preventDefault();
-    }
+    event.preventDefault();
 
     const { height, weight } = $scope.user;
-
 
     if (!height || !weight || height <= 0 || weight <= 0) {
       $scope.bmiResult = "Harap masukkan data yang valid!";
@@ -47,5 +43,8 @@ angular.module('bmiApp', []).controller('bmiCtrl', ['$scope', function ($scope) 
 
     $scope.bmiResult = `BMI Anda : ${bmi}`;
     $scope.bmiClassification = classification;
+
+    const modal = new bootstrap.Modal(document.getElementById('bmiModal'));
+    modal.show();
   };
 }]);

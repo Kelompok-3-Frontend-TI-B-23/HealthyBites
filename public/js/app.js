@@ -39,9 +39,14 @@ angular.module('mainApp', ['ngRoute'])
     .when('/bbi', {
       templateUrl: 'bbi.html', // Halaman edit dan delet resep
       controller: 'bbiCtrl'
-    }).when('/addNutrition', {
-      templateUrl: 'addNutrition.html',  // Halaman untuk menambahkan data nutrisi baru
+    })
+    .when('/addNutrition', {
+      templateUrl: 'addNutrition.html', 
       controller: 'addNutritionCtrl'
+    })
+    .when('/nutrition', {
+      templateUrl: 'nutrition.html',
+      controller: 'nutritionCtrl'
     });
 
 }).run(function($rootScope, $location) {

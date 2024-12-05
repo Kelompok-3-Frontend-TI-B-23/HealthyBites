@@ -47,6 +47,10 @@ angular.module('mainApp', ['ngRoute'])
     .when('/nutrition', {
       templateUrl: 'nutrition.html',
       controller: 'nutritionCtrl'
+    })
+    .when('/editNutrition', {
+      templateUrl: 'editNutrition.html',
+      controller: 'editNutritionCtrl'
     });
 
 }).run(function($rootScope, $location) {

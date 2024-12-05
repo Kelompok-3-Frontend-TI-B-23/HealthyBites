@@ -139,10 +139,10 @@
     </div>
 
     <!-- Berita Catalog -->
-    <div class="berita-container container">
-      <div class="row g-3">
+    <div class="berita-container container d-flex justify-content-center">
+   
         <!-- Loop through the newsList -->
-        <div class="col-md-4" ng-repeat="news in newsList">
+        <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center" ng-repeat="news in newsList | filter: caseInsensitiveFilter">
           <div class="card berita-card">
             <img
               ng-src="{{news.img || 'assets/default-recipe.jpg'}}"
@@ -161,18 +161,16 @@
               </a>
               <p class="card-text">
                 <small class="text-muted">
-                  <i
-                    class="fa fa-calendar"
-                    style="margin-right: 5px"
-                  ></i>
-                  {{news.date | date:'dd MMMM yyyy'}}
+                  <i class="fa fa-calendar" style="margin-right: 5px"></i>
+                  {{news.time | date:'dd MMMM yyyy'}}
                 </small>
               </p>
             </div>
           </div>
         </div>
-      </div>
+    
     </div>
+    
 
     <!-- Modal for news details (You need to add this modal HTML) -->
     <div class="modal fade" id="newsDetailModal" tabindex="-1" aria-labelledby="newsDetailModalLabel" aria-hidden="true" ng-if="selectedNews">

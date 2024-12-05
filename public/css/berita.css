@@ -34,7 +34,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  padding: 20px;
+  padding: 50px;
   max-width: 2000px;
   margin: 0 auto 20px auto;
 }
@@ -113,11 +113,12 @@ body {
 }
 
 .berita-card:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .berita-card {
-  width: 100%;
+  /* height: 1%; */
+  width: 90%;
   max-width: 400px;
   border: none;
   border-radius: 2px;
@@ -127,7 +128,7 @@ body {
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Selalu ada bayangan */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
 
 /* Search Section */
@@ -222,7 +223,7 @@ input {
 /* Responsiveness */
 @media (max-width: 1200px) {
   .berita-card {
-    width: 45%;
+    gap:2rem;
   }
 }
 

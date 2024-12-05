@@ -5,7 +5,6 @@ angular
     $http
       .get("/api/news")
       .then(function (response) {
-        // Simpan data berita yang diterima di $scope
         $scope.newsList = response.data;
         console.log($scope.newsList);
       })
@@ -15,17 +14,15 @@ angular
 
     // Fungsi untuk melihat detail berita berdasarkan ID
     $scope.viewNews = function (newsId) {
-      console.log("Selected News ID:", newsId); 
+      console.log("Selected News ID:", newsId);
       if (!newsId) {
         console.error("News ID is invalid!");
-        return; // Jangan lanjutkan jika newsId tidak valid
+        return;
       }
       $http
         .get("/api/news/" + newsId)
         .then(function (response) {
           $scope.selectedNews = response.data;
-          // Modal untuk menampilkan detail berita
-      
           const modal = new bootstrap.Modal(document.getElementById('newsDetailModal'));
           modal.show();
         })
@@ -47,11 +44,21 @@ angular
       })
       .then(function (response) {
         alert("News added successfully!");
-        $scope.newsList.push(response.data); // Menambahkan berita yang baru ditambahkan ke list
-        $scope.newNews = {}; // Reset form setelah berhasil
+        $scope.newsList.push(response.data);
+        $scope.newNews = {};
       })
       .catch(function (error) {
         console.error("Error adding news:", error);
       });
     };
+
+    // Fungsi filter case-insensitive
+    $scope.caseInsensitiveFilter = function (news) {
+      if (!$scope.searchQuery) return true; // Tampilkan semua jika query kosong
+      const query = $scope.searchQuery.toLowerCase(); // Query pencarian ke huruf kecil
+      return news.title.toLowerCase().includes(query); // Periksa kecocokan pada title
+    };
+
+    // Inisialisasi query pencarian
+    $scope.searchQuery = "";
   });

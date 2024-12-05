@@ -24,6 +24,10 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+.nav-link :hover {
+  transform: scale(1.05);
+}
 /* Login Wrapper */
 #login-page {
   font-family: "Capriola", sans-serif;

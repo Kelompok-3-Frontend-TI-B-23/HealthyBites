@@ -44,15 +44,14 @@
     </nav>
 
     <!-- Content -->
-    <div class="container my-5">
+    <div class="container my-5" style="max-width: 600px;">
       <h1 class="text-center mb-4" style="color: #16542a">Admin Options</h1>
-      <div class="row">
-        <!-- Recipe Section -->
-        <div class="col-md-6">
-          <h3 class="text-center mb-3" style="color: #16542a">
-            Manage Recipes
-          </h3>
-
+    
+      <!-- Recipe Section -->
+      <div class="row mb-4">
+        <div class="col">
+          <h3 class="text-center mb-3" style="color: #16542a">Manage Recipes</h3>
+    
           <!-- Add Recipe -->
           <div class="card mb-3">
             <div class="card-header">Add Recipe</div>
@@ -61,7 +60,7 @@
               <a ng-href="/addRecipe" class="btn btn-add">Add Recipe</a>
             </div>
           </div>
-
+    
           <!-- Edit and Delete Recipe -->
           <div class="card mb-3">
             <div class="card-header">Edit or Delete Recipe</div>
@@ -69,19 +68,17 @@
               <p class="card-text">
                 Update or remove recipes that are no longer needed.
               </p>
-              <a ng-href="/editRecipe" class="btn btn-edit"
-                >Edit or Delete Recipe</a
-              >
+              <a ng-href="/editRecipe" class="btn btn-edit">Edit or Delete Recipe</a>
             </div>
           </div>
         </div>
-
-        <!-- Nutrition Section -->
-        <div class="col-md-6">
-          <h3 class="text-center mb-3" style="color: #16542a">
-            Manage Nutrition
-          </h3>
-
+      </div>
+    
+      <!-- Nutrition Section -->
+      <div class="row mb-4">
+        <div class="col">
+          <h3 class="text-center mb-3" style="color: #16542a">Manage Nutrition</h3>
+    
           <!-- Add Nutrition -->
           <div class="card mb-3">
             <div class="card-header">Add Nutrition</div>
@@ -90,7 +87,7 @@
               <a ng-href="/addNutrition" class="btn btn-add">Add Nutrition</a>
             </div>
           </div>
-
+    
           <!-- Edit and Delete Nutrition -->
           <div class="card mb-3">
             <div class="card-header">Edit or Delete Nutrition</div>
@@ -98,14 +95,39 @@
               <p class="card-text">
                 Update or remove nutritional data that is no longer needed.
               </p>
-              <a ng-href="/editNutrition" class="btn btn-edit"
-                >Edit or Delete Nutrition</a
-              >
+              <a ng-href="/editNutrition" class="btn btn-edit">Edit or Delete Nutrition</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    
+      <!-- News Section -->
+      <div class="row mb-4">
+        <div class="col">
+          <h3 class="text-center mb-3" style="color: #16542a">Manage News</h3>
+    
+          <!-- Add News -->
+          <div class="card mb-3">
+            <div class="card-header">Add News</div>
+            <div class="card-body text-center">
+              <p class="card-text">Create and manage news for users.</p>
+              <a ng-href="/addNews" class="btn btn-add">Add News</a>
+            </div>
+          </div>
+    
+          <!-- Edit and Delete News -->
+          <div class="card mb-3">
+            <div class="card-header">Edit or Delete News</div>
+            <div class="card-body text-center">
+              <p class="card-text">
+                Update or remove news that are no longer needed.
+              </p>
+              <a ng-href="/editNews" class="btn btn-edit">Edit or Delete News</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>  
 
     <!-- Logout Confirmation Modal -->
     <div

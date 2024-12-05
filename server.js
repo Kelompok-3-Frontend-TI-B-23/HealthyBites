@@ -18,10 +18,11 @@ app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
+
 // rute api untuk resep
 app.use("/api/recipes", recipeRoutes); 
 app.use('/api/users', userRoutes);
-app.use('/api/news', newsRoutes);
+app.use('/api/news', newsRoute);
 app.use("/api/images", imageRoute);
 app.use("/uploads", express.static("public/uploads")); // Folder untuk gambar
 

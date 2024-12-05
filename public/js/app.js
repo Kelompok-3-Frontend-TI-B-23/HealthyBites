@@ -36,6 +36,14 @@ angular.module('mainApp', ['ngRoute'])
       templateUrl: 'berita.html', // Halaman edit dan delet resep
       controller: 'newsCtrl'
     })
+    .when('/addNews', {
+      templateUrl: 'addNews.html', // Halaman edit dan delet resep
+      controller: 'addNewsCtrl'
+    })
+    .when('/editNews', {
+      templateUrl: 'editNews.html', // Halaman edit dan delet resep
+      controller: 'editNewsCtrl'
+    })
     ;
 
 }).run(function($rootScope, $location) {

@@ -15,7 +15,7 @@ angular
 
     // Fungsi untuk melihat detail berita berdasarkan ID
     $scope.viewNews = function (newsId) {
-      console.log("Selected News ID:", newsId); // Debugging: Pastikan ID ini terdefinisi
+      console.log("Selected News ID:", newsId); 
       if (!newsId) {
         console.error("News ID is invalid!");
         return; // Jangan lanjutkan jika newsId tidak valid
@@ -25,6 +25,7 @@ angular
         .then(function (response) {
           $scope.selectedNews = response.data;
           // Modal untuk menampilkan detail berita
+      
           const modal = new bootstrap.Modal(document.getElementById('newsDetailModal'));
           modal.show();
         })

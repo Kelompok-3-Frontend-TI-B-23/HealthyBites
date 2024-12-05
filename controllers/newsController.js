@@ -1,7 +1,29 @@
 const News = require("../models/newsModel");
 const mongoose = require('mongoose');
 const multer = require('multer');
-const upload = multer({ dest: 'uploads/' }); // Folder penyimpanan file
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'public/uploads/');
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    cb(null, file.fieldname + '-' + uniqueSuffix + '.' + file.originalname.split('.').pop());
+  }
+});
+
+const upload = multer({ 
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!allowedTypes.includes(file.mimetype)) {
+      const error = new Error('Only images are allowed');
+      error.code = 'LIMIT_FILE_TYPES';
+      return cb(error, false);
+    }
+    cb(null, true);
+  }
+});
 
 // Controller untuk mengunggah berita
 exports.uploadNews = [
@@ -9,11 +31,13 @@ exports.uploadNews = [
   async (req, res) => {
     try {
       // Ambil data form dari req.body
+      console.log('Request Body:', req.body); // Debugging
+      console.log('Uploaded File:', req.file); // Debugging
       const news = {
         title: req.body.title,
         content: req.body.content,
         source: req.body.source,
-        date: req.body.date,
+        date: req.body.date || Date.now(), 
       };
 
       // Periksa jika ada file gambar
@@ -55,7 +79,6 @@ exports.getAllNews = async (req, res) => {
   try {
     const news = await News.find();
     res.json(news);
-    console.log('Received newsId:');
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');

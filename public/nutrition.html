@@ -19,7 +19,6 @@
     />
   </head>
   <body ng-controller="nutritionCtrl">
-
     <!-- Hero Section -->
     <div class="bg-dark text-white text-center py-5 hero-section">
       <div class="hero-content">
@@ -74,9 +73,7 @@
         />
         <div class="card-body text-center">
           <div class="details">
-            <button>
-              <i class="fa fa-fire"></i>{{ food.calories }} kcal
-            </button>
+            <button><i class="fa fa-fire"></i>{{ food.calories }} kcal</button>
           </div>
           <h5 class="card-title my-2">{{ food.title }}</h5>
           <div class="my-3 card-btn">
@@ -92,53 +89,60 @@
     </div>
 
     <!-- Modal untuk detail nutrisi -->
-<div
-class="modal fade"
-id="foodDetailModal"
-tabindex="-1"
-aria-labelledby="nutritionDetailModal"
-aria-hidden="true"
-ng-if="selectedNutrition"
->
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" id="nutritionDetailModal">
-        {{ selectedNutrition.title }}
-      </h5>
-      <button
-        type="button"
-        class="btn-close"
-        data-bs-dismiss="modal"
-        aria-label="Close"
-      ></button>
+    <div
+      class="modal fade"
+      id="nutritionDetailModal"
+      tabindex="-1"
+      aria-labelledby="nutritionDetailModal"
+      aria-hidden="true"
+      ng-if="selectedNutrition"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="nutritionDetailModal">
+              {{ selectedNutrition.title }}
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              ng-src="{{ selectedNutrition.img || 'assets/default-food.jpg' }}"
+              class="img-fluid my-2"
+              alt="{{ selectedNutrition.title }}"
+            />
+            <p>
+              <strong>Kalori:</strong> {{ selectedNutrition.calories }} kcal
+            </p>
+            <p><strong>Protein:</strong> {{ selectedNutrition.protein }} g</p>
+            <p><strong>Lemak:</strong> {{ selectedNutrition.fat }} g</p>
+            <p>
+              <strong>Kolesterol:</strong> {{ selectedNutrition.cholesterol }}
+              mg
+            </p>
+            <p><strong>Sodium:</strong> {{ selectedNutrition.sodium }} mg</p>
+            <p>
+              <strong>Fakta Menarik:</strong> {{
+              selectedNutrition.funFacts.join(', ') }}
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+            >
+              Tutup
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="modal-body">
-      <img
-        ng-src="{{ selectedNutrition.img || 'assets/default-food.jpg' }}"
-        class="img-fluid my-2"
-        alt="{{ selectedNutrition.title }}"
-      />
-      <p><strong>Kalori:</strong> {{ selectedNutrition.calories }} kcal</p>
-      <p><strong>Protein:</strong> {{ selectedNutrition.protein }} g</p>
-      <p><strong>Lemak:</strong> {{ selectedNutrition.fat }} g</p>
-      <p><strong>Kolesterol:</strong> {{ selectedNutrition.cholesterol }} mg</p>
-      <p><strong>Sodium:</strong> {{ selectedNutrition.sodium }} mg</p>
-      <p><strong>Fakta Menarik:</strong> {{ selectedNutrition.funFacts.join(', ') }}</p>
-    </div>
-    <div class="modal-footer">
-      <button
-        type="button"
-        class="btn btn-success"
-        data-bs-dismiss="modal"
-      >
-        Tutup
-      </button>
-    </div>
-  </div>
-</div>
-</div>
-
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

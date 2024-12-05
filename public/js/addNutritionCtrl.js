@@ -9,7 +9,7 @@ angular.module('mainApp')
       })
       .then(function (response) {
         alert('Nutrisi berhasil ditambahkan!');
-        $window.location.href = '/dashboardAdmin'; // Pastikan $window sudah didefinisikan
+        $window.location.href = '/dashboardAdmin';
       })
       .catch(function (error) {
         alert('Gagal menambahkan nutrisi: ' + error.data.message);

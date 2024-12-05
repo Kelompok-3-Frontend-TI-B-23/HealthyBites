@@ -21,8 +21,6 @@ const upload = multer({ storage: storage });
 // Rute untuk upload resep
 router.post('/upload', recipeController.uploadRecipe);
 
-router.get('/api/recipes/bytitle/:title', recipeController.getRecipeByTitle);
-
 router.get('/', recipeController.getAllRecipes);
 
 // Route untuk mendapatkan resep berdasarkan recipeId

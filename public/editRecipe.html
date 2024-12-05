@@ -66,12 +66,8 @@
                   >
                     Edit
                   </button>
-                  <button
-                    class="btn btn-danger"
-                    ng-click="openDeletePopup(recipe)"
-                  >
-                    Delete
-                  </button>
+       <button class="btn btn-danger" ng-click="openDeletePopup(recipe)">Delete</button>
+
                 </div>
               </div>
             </div>
@@ -115,12 +111,17 @@
                 </select>
                 </div>
     
-                <div class="form-group">
-                <label for="image">Gambar:</label>
-                <input type="file" id="image" class="form-control" accept="image/*" />
-                <!-- Tambahkan logika untuk memuat gambar saat diubah -->
-                </div>
     
+                <div class="form-row">
+                  <div class="col-12 col-md-6 mb-3">
+                    <label for="foto">Gambar</label><br>
+                    <div>
+                        <img id="previewImage"
+                            ng-src="{{selectedRecipe.img}}"
+                            alt="foto"
+                            width="150">
+                    </div>
+                </div>
                 <div class="form-group">
                 <label for="description">Deskripsi:</label>
                 <textarea id="description" class="form-control" ng-model="selectedRecipe.description" required></textarea>
@@ -175,35 +176,26 @@
         </div>
     </div>
   
+    </div>
 
-    <!-- Delete Recipe Confirmation Popup -->
-    <div class="modal" tabindex="-1" id="deleteRecipeModal" style="display: none">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title">Delete Recipe</h5>
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-                ng-click="closeDeletePopup()"
-            ></button>
-            </div>
-            <div class="modal-body">
-            <p>Are you sure you want to delete the recipe: <strong>{{ selectedRecipe.title }}</strong>?</p>
-            <button class="btn btn-danger" ng-click="deleteRecipe()">
-                Delete
-            </button>
-            <button class="btn btn-secondary" data-bs-dismiss="modal" ng-click="closeDeletePopup()">
-                Cancel
-            </button>
-            </div>
-        </div>
-        </div>
+    <!-- Delete Recipe Confirmation Modal -->
+<div class="modal" tabindex="-1" id="deleteRecipeModal" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Recipe</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="closeDeletePopup()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the recipe: <strong>{{ selectedRecipe.title }}</strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="confirmDelete()">Delete</button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal" ng-click="closeDeletePopup()">Cancel</button>
+      </div>
     </div>
-  
-  
-    </div>
+  </div>
+</div>
+
   </body>
 </html>

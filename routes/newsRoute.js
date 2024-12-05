@@ -12,10 +12,8 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname);
-    cb(null, Date.now() + ext); // Menyimpan gambar dengan nama unik;
-     console.log('Received newsId:');
+    cb(null, Date.now() + ext); // Menyimpan gambar dengan nama unik
   }
-  
 });
 
 const upload = multer({ storage: storage });

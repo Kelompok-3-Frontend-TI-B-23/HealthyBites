@@ -27,7 +27,7 @@
 
   
   /* Container untuk Recipe Catalog dan Detail */
-  .container {
+  .recipe-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

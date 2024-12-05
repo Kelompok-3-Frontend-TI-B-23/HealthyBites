@@ -7,7 +7,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const imageRoute = require("./routes/imageRoute");
 const recipeRoutes = require("./routes/recipeRoute");
-const newsRoutes = require("./routes/newsRoute");
+const newsRoute = require("./routes/newsRoute");
 const multer = require('multer');
 const upload = multer({ dest: 'public/uploads/' }); 
 

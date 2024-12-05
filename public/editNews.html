@@ -102,7 +102,7 @@
                     <label for="foto">Gambar</label><br>
                     <div>
                         <img id="previewImage"
-                            ng-src="{{selectedRecipe.img}}"
+                            ng-src="{{selectedNews.img}}"
                             alt="foto"
                             width="150">
                     </div>
@@ -125,16 +125,16 @@
   
     </div>
 
-    <!-- Delete Recipe Confirmation Modal -->
-<div class="modal" tabindex="-1" id="deleteRecipeModal" style="display: none;">
+    <!-- News Confirmation Modal -->
+<div class="modal" tabindex="-1" id="deleteNewsModal" style="display: none;">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Delete Recipe</h5>
+        <h5 class="modal-title">Delete News</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="closeDeletePopup()"></button>
       </div>
       <div class="modal-body">
-        <p>Are you sure you want to delete the recipe: <strong>{{ selectedRecipe.title }}</strong>?</p>
+        <p>Are you sure you want to delete the news: <strong>{{ selectedNews.title }}</strong>?</p>
       </div>
       <div class="modal-footer">
         <button class="btn btn-danger" ng-click="confirmDelete()">Delete</button>

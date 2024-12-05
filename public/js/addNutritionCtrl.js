@@ -1,5 +1,5 @@
 angular.module('mainApp')
-  .controller('addNutritionCtrl', function ($scope, $http, $location) {
+  .controller('addNutritionCtrl', function ($scope, $http, $location, $window) {
     $scope.submitForm = function () {
       var formData = new FormData(document.getElementById('addNutritionForm'));
 
@@ -9,6 +9,7 @@ angular.module('mainApp')
       })
       .then(function (response) {
         alert('Nutrisi berhasil ditambahkan!');
+        $window.location.href = '/dashboardAdmin'; // Pastikan $window sudah didefinisikan
       })
       .catch(function (error) {
         alert('Gagal menambahkan nutrisi: ' + error.data.message);

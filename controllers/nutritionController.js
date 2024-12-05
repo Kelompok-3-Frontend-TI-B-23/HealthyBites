@@ -2,6 +2,7 @@ const Nutrition = require("../models/nutritionModel");
 const mongoose = require('mongoose');
 const multer = require('multer');
 const path = require('path');
+const Counter = require('../models/counterModel');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -26,11 +27,23 @@ const upload = multer({
   }
 });
 
+async function getNextSequence(sequenceName) {
+  const counter = await Counter.findOneAndUpdate(
+    { id: sequenceName },       
+    { $inc: { seq: 1 } },   
+    { new: true, upsert: true }
+  );
+  return counter.seq;           
+}
+
 exports.uploadNutrition = [
   upload.single('image'),
   async (req, res) => {
     try {
+      const nutritionId = await getNextSequence('nutritionId');
+
       const nutrition = {
+        nutritionId: nutritionId,
         title: req.body.title,
         calories: req.body.calories,
         fat: req.body.fat,
@@ -42,7 +55,7 @@ exports.uploadNutrition = [
       };
 
       if (req.file) {
-        nutrition.image = `/uploads/${req.file.filename}`;
+        nutrition.img = `/uploads/${req.file.filename}`;
       }
 
       const newNutrition = new Nutrition(nutrition);

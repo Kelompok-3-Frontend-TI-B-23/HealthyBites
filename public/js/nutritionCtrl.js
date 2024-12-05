@@ -23,12 +23,11 @@ angular
         // Filter by search query (name or other properties)
         const matchesSearch = !$scope.searchQuery || item.name.toLowerCase().includes($scope.searchQuery.toLowerCase());
 
-        // Filter by calories (0-300, 301-600, 601+)
         const matchesCalories =
           !$scope.caloriesFilter ||
-          ($scope.caloriesFilter === 'low' && item.calories <= 300) ||
-          ($scope.caloriesFilter === 'medium' && item.calories > 300 && item.calories <= 600) ||
-          ($scope.caloriesFilter === 'high' && item.calories > 600);
+          ($scope.caloriesFilter === 'low' && item.calories <= 200) ||
+          ($scope.caloriesFilter === 'medium' && item.calories > 201 && item.calories <= 300) ||
+          ($scope.caloriesFilter === 'high' && item.calories > 300);
 
         // Filter by specific nutrients (e.g., protein, carbs, fat)
         const matchesNutrients =

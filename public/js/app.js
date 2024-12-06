@@ -32,6 +32,30 @@ angular.module('mainApp', ['ngRoute'])
       templateUrl: 'editRecipe.html', // Halaman edit dan delet resep
       controller: 'editRecipeCtrl'
     })
+    .when('/bmi', {
+      templateUrl: 'bmi.html', // Halaman edit dan delet resep
+      controller: 'bmiCtrl'
+    })
+    .when('/bbi', {
+      templateUrl: 'bbi.html', // Halaman edit dan delet resep
+      controller: 'bbiCtrl'
+    })
+    .when('/addNutrition', {
+      templateUrl: 'addNutrition.html', 
+      controller: 'addNutritionCtrl'
+    })
+    .when('/nutrition', {
+      templateUrl: 'nutrition.html',
+      controller: 'nutritionCtrl'
+    })
+    .when('/editNutrition', {
+      templateUrl: 'editNutrition.html',
+      controller: 'editNutritionCtrl'
+    })
+    .when('/profile', {
+      templateUrl: 'profile.html',
+      controller: 'profileCtrl'
+    })
     .when('/berita', {
       templateUrl: 'berita.html', // Halaman edit dan delet resep
       controller: 'newsCtrl'

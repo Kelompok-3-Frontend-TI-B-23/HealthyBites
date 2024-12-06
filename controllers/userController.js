@@ -110,3 +110,60 @@ exports.getUser = async (req, res) => {
     }
 };
 
+const authenticateRequest = (req) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    if (!token) {
+      throw new Error('Access Denied. Please log in.');
+    }
+  
+    try {
+      const decoded = jwt.verify(token, 'your-secret-key'); // Ganti 'your-secret-key' dengan secret key JWT Anda
+      return decoded; // Kembalikan data user yang di-decode
+    } catch (err) {
+      throw new Error('Invalid token. Please log in again.');
+    }
+  };
+  
+  // GET Profile
+  exports.getProfile = async (req, res) => {
+    try {
+      const decodedUser = authenticateRequest(req); // Periksa autentikasi
+      const user = await User.findById(decodedUser.id); // Cari user berdasarkan ID dari token
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json({
+        username: user.username,
+        email: user.email,
+        phone: user.phone,
+      });
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  };
+  
+  // PUT Update Profile
+  exports.updateProfile = async (req, res) => {
+    try {
+      const decodedUser = authenticateRequest(req); // Periksa autentikasi
+      const { username, phone, password } = req.body;
+  
+      const user = await User.findById(decodedUser.id);
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Update data pengguna
+      user.username = username || user.username;
+      user.phone = phone || user.phone;
+      if (password) {
+        user.password = password; // Pastikan hashing password jika perlu
+      }
+      await user.save();
+  
+      res.status(200).json({ message: 'Profile updated successfully' });
+    } catch (err) {
+      res.status(401).json({ message: err.message });
+    }
+  };
+

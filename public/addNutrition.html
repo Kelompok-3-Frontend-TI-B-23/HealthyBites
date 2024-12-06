@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Nutrition</title>
+  <link rel="stylesheet" href="css/addRecipe.css">
+</head>
+<body ng-app="mainApp" ng-controller="addNutritionCtrl">
+  <div class="form-wrapper">
+    <h1 class="form-title">Tambah Nutrisi</h1>
+    <form id="addNutritionForm" enctype="multipart/form-data" ng-submit="submitForm()" novalidate>
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+      </div>
+      <div class="form-group">
+        <label for="calories">Calories:</label>
+        <input type="number" id="calories" name="calories" required>
+      </div>
+      <div class="form-group">
+        <label for="fat">Fat:</label>
+        <input type="number" id="fat" name="fat" required>
+      </div>
+      <div class="form-group">
+        <label for="saturatedFat">Saturated Fat:</label>
+        <input type="number" id="saturatedFat" name="saturatedFat" required>
+      </div>
+      <div class="form-group">
+        <label for="protein">Protein:</label>
+        <input type="number" id="protein" name="protein" required>
+      </div>
+      <div class="form-group">
+        <label for="cholesterol">Cholesterol:</label>
+        <input type="number" id="cholesterol" name="cholesterol" required>
+      </div>
+      <div class="form-group">
+        <label for="sodium">Sodium:</label>
+        <input type="number" id="sodium" name="sodium" required>
+      </div>
+      <div class="form-group">
+        <label for="funFacts">Fun Facts (separated by commas):</label>
+        <textarea id="funFacts" name="funFacts" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="img">Image:</label>
+        <input type="file" id="img" name="image" accept="image/*" required>
+      </div>
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -7,22 +7,29 @@ angular.module("mainApp").controller('profileCtrl', function ($scope, $http, $lo
     const token = localStorage.getItem('authToken');
     // Fungsi untuk mendapatkan profil pengguna
     $scope.getUserProfile = function () {
-      // Kirim permintaan HTTP ke backend untuk mengambil data pengguna
-      $http.get('/profile', { headers: { Authorization: `Bearer ${token}`} })
-          .then(function (response) {
-              // Simpan data pengguna yang diterima ke dalam $scope.user
-              $scope.user = response.data.user;
-          })
-          .catch(function (error) {
-              if (error.status === 401) {
-                  alert('You are not logged in. Redirecting to login page...');
-                  $location.path('/login');
-              } else {
-                  console.error('Error fetching user profile:', error);
-                  alert('Failed to load profile data.');
-              }
-          });
-    };
+        const token = localStorage.getItem('authToken'); // Ambil token dari local storage
+        
+        // Kirim permintaan HTTP untuk mendapatkan data pengguna
+        $http.get('/api/users/home', {
+          headers: { Authorization: `Bearer ${token}` } // Tambahkan header otorisasi
+        })
+        .then(function (response) {
+          console.log('User profile data:', response.data); // Log data pengguna untuk debugging
+          $scope.user = response.data.user; // Simpan data pengguna di $scope.user
+          $scope.showProfileModal = true; // Tampilkan modal profil (misalnya dengan ng-show)
+        })
+        .catch(function (error) {
+          console.error('Error fetching user profile:', error); // Log error untuk debugging
+          $scope.errorMessage = error.data ? error.data.error : 'Failed to fetch user data.'; // Pesan error
+          
+          if (error.status === 401) {
+            alert('You are not logged in. Redirecting to login page...');
+            $location.path('/login'); // Arahkan ke halaman login jika tidak terautentikasi
+          } else {
+            alert('Failed to load profile data.'); // Tampilkan pesan error umum
+          }
+        });
+      };
   
     $scope.updateUserProfile = function () {
       if ($scope.newPassword !== $scope.confirmNewPassword) {

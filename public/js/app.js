@@ -78,6 +78,9 @@ angular.module('mainApp', ['ngRoute'])
   $rootScope.$on('$routeChangeStart', function() {
     // Set the background image class based on the path
     switch($location.path()) {
+      case '/':
+        $rootScope.backgroundImageClass = 'background-image';  // No background for home
+        break;
       case '/home':
         $rootScope.backgroundImageClass = '';  // No background for home
         break;

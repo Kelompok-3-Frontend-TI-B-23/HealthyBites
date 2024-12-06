@@ -66,7 +66,7 @@
                   >
                     Edit
                   </button>
-       <button class="btn btn-danger" ng-click="openDeletePopup(recipe)">Delete</button>
+              <button class="btn btn-danger" ng-click="openDeletePopup(recipe)">Delete</button>
 
                 </div>
               </div>
@@ -179,23 +179,23 @@
     </div>
 
     <!-- Delete Recipe Confirmation Modal -->
-<div class="modal" tabindex="-1" id="deleteRecipeModal" style="display: none;">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Delete Recipe</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="closeDeletePopup()"></button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure you want to delete the recipe: <strong>{{ selectedRecipe.title }}</strong>?</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-danger" ng-click="confirmDelete()">Delete</button>
-        <button class="btn btn-secondary" data-bs-dismiss="modal" ng-click="closeDeletePopup()">Cancel</button>
+    <div class="modal" tabindex="-1" id="deleteRecipeModal" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete Recipe</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="closeDeletePopup()"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete the recipe: <strong>{{ selectedRecipe.title }}</strong>?</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-danger" ng-click="confirmDelete()">Delete</button>
+            <button class="btn btn-secondary" data-bs-dismiss="modal" ng-click="closeDeletePopup()">Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
 
   </body>
 </html>

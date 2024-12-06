@@ -25,6 +25,14 @@ body {
   background-attachment: fixed;
 }
 
+.background-default {
+  background-image: url('../assets/background/back3.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 .nav-link :hover {
   transform: scale(1.05);
 }

@@ -71,19 +71,56 @@ angular.module('mainApp', ['ngRoute'])
     ;
 
 }).run(function($rootScope, $location) {
-  // Create a $rootScope variable to track background image status
+  // Set default background class
   $rootScope.backgroundImageClass = '';
 
   // Listen to route changes
   $rootScope.$on('$routeChangeStart', function() {
     // Set the background image class based on the path
-    if ($location.path() === '/home') {
-      $rootScope.backgroundImageClass = '';
-    } else {
-      $rootScope.backgroundImageClass = 'background-image';
+    switch($location.path()) {
+      case '/home':
+        $rootScope.backgroundImageClass = '';  // No background for home
+        break;
+      case '/login':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for login
+        break;
+      case '/profile':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/dashboardAdmin':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/editRecipe':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/editNews':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/addRecipe':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/addNews':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/editNutrition':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/addNutrition':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/bbi':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      case '/bmi':
+        $rootScope.backgroundImageClass = 'background-image'; // Specific background for profile
+        break;
+      default:
+        $rootScope.backgroundImageClass = 'background-default'; // Default background for all other pages
+        break;
     }
   });
 });
+
 
 
 

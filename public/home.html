@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary px-5">
       <div class="container-fluid">
         <!-- Navbar Brand Tetap di Kiri -->
-        <a style="color: #16542a" class="navbar-brand" href="#">Navbar</a>
+        <img src="assets/logo.png" alt="" style="width: 7%; height: auto;">
 
         <!-- Button Toggle untuk Mobile -->
         <button
@@ -56,7 +56,7 @@
               >
             </li>
             <li class="nav-item mx-3">
-              <a style="color: #16542a" class="nav-link hover-scale-zoom1" href="#"
+              <a style="color: #16542a" class="nav-link hover-scale-zoom1" href="/nutrition"
                 >Info Nutrisi</a
               >
             </li>
@@ -76,12 +76,12 @@
               </a>
               <ul class="dropdown-menu">
                 <li>
-                  <a style="color: #16542a" class="dropdown-item" href="#"
+                  <a style="color: #16542a" class="dropdown-item" href="/bmi"
                     >Kalkulator BMI</a
                   >
                 </li>
                 <li>
-                  <a style="color: #16542a" class="dropdown-item" href="#"
+                  <a style="color: #16542a" class="dropdown-item" href="/bbi"
                     >Kalkulator BBI</a
                   >
                 </li>
@@ -92,13 +92,9 @@
 
         <!-- Ikon Profil di Kanan -->
         <div class="d-flex justify-content-end">
-          <button
-        class="btn btn-link p-0 me-3"
-        data-bs-toggle="modal"
-        data-bs-target="#profileModal"
-      >
-        <i class="bi bi-person-circle" style="font-size: 1.5rem; color: #16542a"></i>
-      </button>
+          <a href="/profile" class="btn btn-link p-0 me-3">
+            <i class="bi bi-person-circle" style="font-size: 1.5rem; color: #16542a"></i>
+          </a>
           <button
             class="btn btn-sm btn-outline-success"
             style="color: #16542a; border-color: #16542a"
@@ -108,6 +104,7 @@
             Logout
           </button>
         </div>
+        
       </div>
     </nav>
 
@@ -307,7 +304,11 @@
           890 juta orang dari seluruh dunia mengalami obesitas. Hitung berat
           badan ideal Anda di sini!
         </p>
-        <a href="#" class="btn btn-dark-green hover-scale-zoom1">Kalkulator</a>
+        <a href="/bmi" class="btn btn-dark-green hover-scale-zoom1 m-2">Kalkulator BMI</a>
+          <a href="/bbi" class="btn btn-dark-green hover-scale-zoom1 m-2">Kalkulator BBI</a>
+        <div class="row">
+          
+        </div>
       </div>
     </div>
 
@@ -315,107 +316,82 @@
       <div class="container p-4">
         <div class="row">
           <!-- Get Help Section -->
-          <div class="col-md-4 mb-3">
+          <div class="col-md-4 mb-3 text-center">
             <h6 class="text-white text-uppercase fw-bold">Get Help</h6>
             <ul class="list-unstyled">
               <li>
                 <a href="#" class="text-white text-decoration-none">FAQ</a>
               </li>
               <li>
-                <a href="#" class="text-white text-decoration-none"
-                  >Privacy Policy</a
-                >
+                <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
               </li>
               <li>
-                <a href="#" class="text-white text-decoration-none"
-                  >Terms and Condition</a
-                >
+                <a href="#" class="text-white text-decoration-none">Terms and Condition</a>
               </li>
             </ul>
           </div>
           <!-- Useful Links Section -->
-          <div class="col-md-4 mb-3">
+          <div class="col-md-4 mb-3 text-center">
             <h6 class="text-white text-uppercase fw-bold">Useful Links</h6>
             <ul class="list-unstyled">
               <li>
-                <a href="#" class="text-white text-decoration-none">Home</a>
+                <a href="/home" class="text-white text-decoration-none">Home</a>
               </li>
               <li>
-                <a href="#" class="text-white text-decoration-none">Resep</a>
+                <a href="/recipe" class="text-white text-decoration-none">Resep</a>
               </li>
               <li>
-                <a href="#" class="text-white text-decoration-none"
-                  >Info Nutrisi</a
-                >
+                <a href="/nutrition" class="text-white text-decoration-none">Info Nutrisi</a>
               </li>
               <li>
-                <a href="#" class="text-white text-decoration-none">Berita</a>
+                <a href="/berita" class="text-white text-decoration-none">Berita</a>
               </li>
               <li>
-                <a href="#" class="text-white text-decoration-none"
-                  >Kalkulator</a
-                >
+                <a href="/bbi" class="text-white text-decoration-none">Kalkulator BBI</a>
+              </li>
+              <li>
+                <a href="/bmi" class="text-white text-decoration-none">Kalkulator BMI</a>
               </li>
             </ul>
           </div>
           <!-- Contact Section -->
-          <div class="col-md-4 mb-3">
+          <div class="col-md-4 mb-3 text-center">
             <h6 class="text-white text-uppercase fw-bold">Contact</h6>
             <ul class="list-unstyled">
               <li><span class="text-white">Jakarta, Indonesia</span></li>
               <li>
-                <a
-                  href="mailto:email@email.com"
-                  class="text-white text-decoration-none"
-                  >email@email.com</a
-                >
+                <a href="mailto:email@email.com" class="text-white text-decoration-none">email@email.com</a>
               </li>
-              <li><span class="text-white">no telp</span></li>
+              <li><span class="text-white">08123456789</span></li>
             </ul>
           </div>
         </div>
-
+    
         <hr class="my-4 text-white" />
-
+    
         <!-- Social Media Icons -->
         <div class="row text-center p-4">
           <div class="col-12 d-flex justify-content-center">
-            <a
-              href="https://www.facebook.com/"
-              class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1"
-              style="width: 2.5rem; height: 2.5rem"
-            >
+            <a href="https://www.facebook.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem">
               <i class="bi bi-facebook" style="font-size: 1rem"></i>
             </a>
-            <a
-              href="https://x.com/"
-              class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1"
-              style="width: 2.5rem; height: 2.5rem"
-            >
+            <a href="https://x.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem">
               <i class="bi bi-twitter" style="font-size: 1rem"></i>
             </a>
-            <a
-              href="https://github.com/"
-              class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1"
-              style="width: 2.5rem; height: 2.5rem"
-            >
+            <a href="https://github.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem">
               <i class="bi bi-github" style="font-size: 1rem"></i>
             </a>
-            <a
-              href="https://www.linkedin.com/"
-              class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1"
-              style="width: 2.5rem; height: 2.5rem"
-            >
+            <a href="https://www.linkedin.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem">
               <i class="bi bi-linkedin" style="font-size: 1rem"></i>
             </a>
           </div>
         </div>
-        
-
+    
         <!-- Copyright Section -->
         <p class="mb-0 text-white text-center">© 2024 Copyright</p>
       </div>
     </footer>
+    
 
     <!-- Profile Modal -->
     <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">

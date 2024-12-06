@@ -81,34 +81,34 @@ exports.loginUser = async (req, res) => {
 };
 
 
-// Menampilkan data user yang sedang login
 exports.getUser = async (req, res) => {
-    try {
-        // Ambil header
-        const authHeader = req.headers.authorization; 
-        if (!authHeader || !authHeader.startsWith('Bearer ')) {
-            return res.status(401).json({ error: 'Token tidak ditemukan atau format salah.' });
-        }
+  try {
+      // Ambil header
+      const authHeader = req.headers.authorization;
+      if (!authHeader || !authHeader.startsWith('Bearer ')) {
+          return res.status(401).json({ error: 'Token tidak ditemukan atau format salah.' });
+      }
 
-        const token = authHeader.split(' ')[1]; // Ambil token setelah 'Bearer'
-        console.log('Token:', token);
+      const token = authHeader.split(' ')[1]; // Ambil token setelah 'Bearer'
+      console.log('Token:', token);
 
-        // Verifikasi token
-        const decoded = jwt.verify(token, SECRET_KEY);
-        console.log('Decoded token:', decoded);
+      // Verifikasi token
+      const decoded = jwt.verify(token, SECRET_KEY);
+      console.log('Decoded token:', decoded);
 
-        // Ambil user dari database
-        const user = await User.findById(decoded.userId).select('-password');
-        if (!user) {
-            return res.status(404).json({ error: 'User tidak ditemukan.' });
-        }
+      // Ambil user dari database
+      const user = await User.findById(decoded.userId).select('-password');
+      if (!user) {
+          return res.status(404).json({ error: 'User tidak ditemukan.' });
+      }
 
-        res.status(200).json({ user });
-    } catch (error) {
-        console.error('Error in getUser:', error);
-        res.status(401).json({ error: 'Token tidak valid atau kedaluwarsa.' });
-    }
+      res.status(200).json({ user });
+  } catch (error) {
+      console.error('Error in getUser:', error);
+      res.status(401).json({ error: 'Token tidak valid atau kedaluwarsa.' });
+  }
 };
+
 
 const authenticateRequest = (req) => {
     const token = req.headers.authorization?.split(' ')[1];

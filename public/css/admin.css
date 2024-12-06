@@ -10,9 +10,11 @@
     --light-green: #9bbc43;
     }
 
-.card {
-    border: none;
-  }
+    .card {
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+    }
+    
   .card:hover {
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;

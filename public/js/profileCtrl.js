@@ -5,21 +5,23 @@ angular.module("mainApp").controller('profileCtrl', function ($scope, $http, $lo
     $scope.confirmNewPassword = '';
   
     const token = localStorage.getItem('authToken');
-  
+    // Fungsi untuk mendapatkan profil pengguna
     $scope.getUserProfile = function () {
+      // Kirim permintaan HTTP ke backend untuk mengambil data pengguna
       $http.get('/profile', { headers: { Authorization: `Bearer ${token}`} })
-        .then(function (response) {
-          $scope.user = response.data;
-        })
-        .catch(function (error) {
-          if (error.status === 401) {
-            alert('You are not logged in. Redirecting to login page...');
-            $location.path('/login');
-          } else {
-            console.error('Error fetching user profile:', error);
-            alert('Failed to load profile data.');
-          }
-        });
+          .then(function (response) {
+              // Simpan data pengguna yang diterima ke dalam $scope.user
+              $scope.user = response.data.user;
+          })
+          .catch(function (error) {
+              if (error.status === 401) {
+                  alert('You are not logged in. Redirecting to login page...');
+                  $location.path('/login');
+              } else {
+                  console.error('Error fetching user profile:', error);
+                  alert('Failed to load profile data.');
+              }
+          });
     };
   
     $scope.updateUserProfile = function () {

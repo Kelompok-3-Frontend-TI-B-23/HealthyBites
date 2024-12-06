@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <title>Edit or Delete News</title>
+  </head>
+  <body ng-controller="editNewsCtrl">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary px-4"
+      style="width: 100%"
+    >
+      <div class="container-fluid">
+        <a style="color: #16542a" class="navbar-brand fw-bold" href="#"
+          >Admin Dashboard</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+          <div class="d-flex align-items-center">
+            <button
+              class="btn btn-sm btn-outline-success"
+              style="color: #16542a; border-color: #16542a"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="container my-5">
+      <h1 class="text-center mb-4" style="color: #16542a">Manage News</h1>
+      <div class="row">
+        <!-- News List -->
+        <div class="col-md-12">
+          <div class="card mb-3" ng-repeat="news in news">
+            <div class="card-body">
+              <div class="d-flex justify-content-between">
+                <div>
+                  <h5 class="card-title">{{ news.title }}</h5>
+                  <img
+                    ng-src="{{ news.img }}"
+                    alt="{{ news.title }}"
+                    class="img-fluid"
+                    style="max-width: 200px; height: auto"
+                  />
+                </div>
+                <div>
+                  <button
+                    class="btn btn-warning"
+                    ng-click="openEditPopup(news)"
+                  >
+                    Edit
+                  </button>
+       <button class="btn btn-danger" ng-click="openDeletePopup(news)">Delete</button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit News Modal -->
+    <div class="modal" tabindex="-1" id="editNewsModal" style="display: none">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title">Edit News</h5>
+            <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+            ng-click="closeEditPopup()"
+          ></button>
+            </div>
+            <div class="modal-body">
+            <form id="editNewsForm" ng-submit="updateNews()">
+                <div class="form-group">
+                <label for="title">Judul:</label>
+                <input type="text" id="title" class="form-control" ng-model="selectedNews.title" required />
+                </div>
+
+                <div class="form-row">
+                  <div class="col-12 col-md-6 mb-3">
+                    <label for="foto">Gambar</label><br>
+                    <div>
+                        <img id="previewImage"
+                            ng-src="{{selectedNews.img}}"
+                            alt="foto"
+                            width="150">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="content">Isi:</label>
+                    <input type="text" id="content" class="form-control" ng-model="selectedNews.content" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="source">Sumber:</label>
+                    <input type="text" id="source" class="form-control" ng-model="selectedNews.source" required />
+                </div>
+                
+            </form>
+            </div>
+        </div>
+        </div>
+    </div>
+  
+    </div>
+
+    <!-- News Confirmation Modal -->
+<div class="modal" tabindex="-1" id="deleteNewsModal" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete News</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ng-click="closeDeletePopup()"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the news: <strong>{{ selectedNews.title }}</strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" ng-click="confirmDelete()">Delete</button>
+        <button class="btn btn-secondary" data-bs-dismiss="modal" ng-click="closeDeletePopup()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </body>
+</html>

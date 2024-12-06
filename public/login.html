@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/loginSign.css" />
+  </head>
+  <body
+    class="login-page"
+    ng-controller="loginCtrl"
+    ng-class="backgroundImageClass"
+  >
+    <div class="login-wrapper">
+      <div class="form-wrapper">
+        <div class="login-container">
+          <h2 class="form-title">Login</h2>
+          <form ng-submit="login()" novalidate>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                ng-model="formData.email"
+                placeholder="Enter your email"
+                class="form-control"
+                required
+              />
+              <p class="error-message" ng-show="!formData.email && submitted">
+                Email is required.
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                ng-model="formData.password"
+                placeholder="Enter your password"
+                class="form-control"
+                required
+              />
+              <p
+                class="error-message"
+                ng-show="!formData.password && submitted"
+              >
+                Password is required.
+              </p>
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit w-100">
+              Login
+            </button>
+          </form>
+          <div class="text-center mt-3">
+            <p class="form-link">
+              Don't have an account? <a ng-href="/">Sign Up</a>
+            </p>
+          </div>
+          <p class="error-message text-center mt-3" ng-show="errorMessage">
+            {{ errorMessage }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

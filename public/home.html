@@ -1,0 +1,478 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <base href="/" />
+    <!-- CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <!-- <link rel="stylesheet" href="/css/berita.css" /> -->
+    <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+  rel="stylesheet"
+/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  rel="stylesheet"
+/>
+
+
+  </head>
+  <body ng-app="mainApp" ng-controller="homeCtrl">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-5">
+      <div class="container-fluid">
+        <!-- Navbar Brand Tetap di Kiri -->
+        <img src="assets/logo.png" alt="" style="width: 7%; height: auto;">
+
+        <!-- Button Toggle untuk Mobile -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Menu Navigasi di Tengah -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item mx-3">
+              <a
+                style="color: #16542a"
+                class="nav-link hover-scale-zoom1 active"
+                aria-current="page"
+                href="/home"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item mx-3">
+              <a style="color: #16542a" class="nav-link hover-scale-zoom1" href="/recipe"
+                >Resep</a
+              >
+            </li>
+            <li class="nav-item mx-3">
+              <a style="color: #16542a" class="nav-link hover-scale-zoom1" href="/nutrition"
+                >Info Nutrisi</a
+              >
+            </li>
+            <li class="nav-item mx-3">
+              <a style="color: #16542a" class="nav-link hover-scale-zoom1" href="/berita">Berita</a>
+            </li>
+            <li class="nav-item dropdown mx-3">
+              <a
+                style="color: #16542a"
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Kalkulator
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a style="color: #16542a" class="dropdown-item" href="/bmi"
+                    >Kalkulator BMI</a
+                  >
+                </li>
+                <li>
+                  <a style="color: #16542a" class="dropdown-item" href="/bbi"
+                    >Kalkulator BBI</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Ikon Profil di Kanan -->
+        <div class="d-flex justify-content-end">
+            <button
+            class="btn btn-link p-0 me-3"
+            data-bs-toggle="modal"
+            data-bs-target="#profileModal" ng-click="openProfilePopup()"
+          >
+            <i class="bi bi-person-circle" style="font-size: 1.5rem; color: #16542a"></i>
+          </button>
+          <button
+            class="btn btn-sm btn-outline-success" 
+            style="color: #16542a; border-color: #16542a"
+            data-bs-toggle="modal"
+            data-bs-target="#logoutModal"
+          >
+            Logout
+          </button>
+        </div>
+        
+      </div>
+    </nav>
+
+    <section id="home" class="hero-section pt-2">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="hero-title dark-green-text">Live Your Best Life</h1>
+            <p class="">
+              Temukan tips kesehatan, tren gaya hidup, dan inspirasi untuk hidup seimbang melalui makanan sehat.
+            </p>
+            <a href="#recipe" class="btn btn-dark-green hover-scale-zoom1"
+              >Jelajahi</a
+            >
+          </div>
+          <div class="col-lg-6">
+            <img
+              src="assets/About-image.jpg"
+              alt="Lifestyle"
+              class="img-fluid featured-image rounded-5"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Jelajahi Resep Populer -->
+    <div class="p-5" id="recipe" ng-app="mainApp" ng-controller="recipeCtrl">
+      <h3 class="dark-green-text text-center fw-bold display-6 pt-5 mt-4">
+        Jelajahi Resep Populer
+      </h3>
+      <p class="text-center">
+        Temukan inspirasi masakan lezat yang mudah dibuat untuk dinikmati bersama keluarga dan teman.
+      </p>
+    
+      <div class="row row-cols-1 row-cols-md-3 g-4 p-5">
+        <!-- Gunakan ng-repeat untuk membuat card dinamis -->
+        <div class="col" ng-repeat="recipe in filteredRecipes | limitTo: 3">
+          <div class="card zoom-shadow-1">
+            <img
+              ng-src="{{recipe.img}}"
+              class="card-img-top"
+              alt="{{recipe.title}}"
+            />
+            <div class="card-body">
+              <h5 class="card-title dark-green-text">{{recipe.title}}</h5>
+              <p class="card-text text-muted">
+                {{recipe.description | limitTo: 95}}...
+              </p>
+              <a href="/recipe" class="btn btn-dark-green zoom-shadow-1">
+                Baca
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <div class="pt-5">
+      <h3 class="dark-green-text text-center fw-bold display-6 pt-5 mt-4">
+        Lihat Nutrisi Makanan Kekinian
+      </h3>
+      <p class="text-center">
+        Pelajari kandungan gizi makanan populer untuk mendukung gaya hidup sehat.
+      </p>
+      <div id="carouselExampleCaptions" class="carousel slide p-5">
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="0"
+            class="active"
+            aria-current="true"
+            aria-label="Slide 1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="1"
+            aria-label="Slide 2"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#carouselExampleCaptions"
+            data-bs-slide-to="2"
+            aria-label="Slide 3"
+          ></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="uploads/image-1733403552561-817681036.jpg" class="d-block w-100" alt="Rendang" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Rendang</h5>
+              <p>
+                Hidangan khas Minangkabau yang kaya rempah, dimasak perlahan hingga menghasilkan daging sapi empuk dengan bumbu kental yang lezat.
+              </p>
+              <a href="/nutrition" class="btn btn-yellow zoom-shadow-1">Baca</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="uploads/image-1733403625907-379888811.jpeg" class="d-block w-100" alt="Sate Ayam" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Sate Ayam</h5>
+              <p>
+                Potongan daging ayam yang dibakar di atas arang, disajikan dengan bumbu kacang gurih dan manis yang khas.
+              </p>
+              <a href="/nutrition" class="btn btn-yellow zoom-shadow-1">Baca</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="uploads/image-1733403672013-782700356.jpg" class="d-block w-100" alt="Nasi Goreng" />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Nasi Goreng</h5>
+              <p>
+                Masakan nasi yang digoreng dengan campuran bumbu, kecap manis, dan lauk pilihan, menciptakan cita rasa Indonesia yang otentik.
+              </p>
+              <a href="/nutrition" class="btn btn-yellow zoom-shadow-1">Baca</a>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="container mt-5" ng-controller="newsCtrl">
+      <h3 class="dark-green-text text-center fw-bold display-6 pt-5 mt-4">
+        Lihat Berita Terkini
+      </h3>
+      <p class="text-center">
+        Tetap update dengan informasi terbaru yang menarik dan bermanfaat untuk Anda.
+      </p>
+      
+      <!-- News Catalog Container -->
+      <div class="row p-5">
+        <!-- Loop through the newsList -->
+        <div class="col-md-6" ng-repeat="news in newsList | filter: caseInsensitiveFilter | limitTo: 4">
+          <div class="card bg-beige zoom-shadow-1 mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img ng-src="{{news.img || 'assets/default-recipe.jpg'}}" class="img-fluid rounded-start card-img" alt="{{news.title}}" />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <a class="text-reset text-decoration-none" href="#">
+                    <h5 class="card-title hover-scale-zoom2 dark-green-text">
+                      {{news.title}}
+                    </h5>
+                  </a>
+                  <p class="card-text">
+                    <small class="text-muted">
+                      <i class="fa fa-calendar" style="margin-right: 5px"></i>
+                      {{news.time | date:'dd MMMM yyyy'}}
+                    </small>
+                  </p>
+                  <a href="/berita" class="btn btn-dark-green hover-scale-zoom1"
+              >Lihat Selengkapnya</a
+            >
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+    <div class="card text-center border-0 pt-5 pb-5 m-5">
+      <div class="card-body">
+        <h5 class="card-title dark-green-text fw-bold display-6">
+          Yakin Berat Badan Anda Ideal?
+        </h5>
+        <p class="card-text">
+          890 juta orang dari seluruh dunia mengalami obesitas. Hitung berat
+          badan ideal Anda di sini!
+        </p>
+        <a href="/bmi" class="btn btn-dark-green hover-scale-zoom1 m-2">Kalkulator BMI</a>
+          <a href="/bbi" class="btn btn-dark-green hover-scale-zoom1 m-2">Kalkulator BBI</a>
+        <div class="row">
+          
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark-green text-center text-lg-start border-top mt-5">
+      <div class="container p-4">
+        <div class="row">
+          <!-- Get Help Section -->
+          <div class="col-md-4 mb-3 text-center">
+            <h6 class="text-white text-uppercase fw-bold">Get Help</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-white text-decoration-none">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="#" class="text-white text-decoration-none">Terms and Condition</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Useful Links Section -->
+          <div class="col-md-4 mb-3 text-center">
+            <h6 class="text-white text-uppercase fw-bold">Useful Links</h6>
+            <ul class="list-unstyled">
+              <li>
+                <a href="/home" class="text-white text-decoration-none">Home</a>
+              </li>
+              <li>
+                <a href="/recipe" class="text-white text-decoration-none">Resep</a>
+              </li>
+              <li>
+                <a href="/nutrition" class="text-white text-decoration-none">Info Nutrisi</a>
+              </li>
+              <li>
+                <a href="/berita" class="text-white text-decoration-none">Berita</a>
+              </li>
+              <li>
+                <a href="/bbi" class="text-white text-decoration-none">Kalkulator BBI</a>
+              </li>
+              <li>
+                <a href="/bmi" class="text-white text-decoration-none">Kalkulator BMI</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Contact Section -->
+          <div class="col-md-4 mb-3 text-center">
+            <h6 class="text-white text-uppercase fw-bold">Contact</h6>
+            <ul class="list-unstyled">
+              <li><span class="text-white">Jakarta, Indonesia</span></li>
+              <li>
+                <a href="mailto:email@email.com" class="text-white text-decoration-none">email@email.com</a>
+              </li>
+              <li><span class="text-white">08123456789</span></li>
+            </ul>
+          </div>
+        </div>
+    
+        <hr class="my-4 text-white" />
+    
+        <!-- Social Media Icons -->
+        <div class="row text-center p-4">
+          <div class="col-12 d-flex justify-content-center">
+            <a href="https://www.facebook.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem">
+              <i class="bi bi-facebook" style="font-size: 1rem"></i>
+            </a>
+            <a href="https://x.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem">
+              <i class="bi bi-twitter" style="font-size: 1rem"></i>
+            </a>
+            <a href="https://github.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem">
+              <i class="bi bi-github" style="font-size: 1rem"></i>
+            </a>
+            <a href="https://www.linkedin.com/" class="text-white mx-2 rounded-circle border border-light d-flex justify-content-center align-items-center hover-scale-zoom1" style="width: 2.5rem; height: 2.5rem">
+              <i class="bi bi-linkedin" style="font-size: 1rem"></i>
+            </a>
+          </div>
+        </div>
+    
+        <!-- Copyright Section -->
+        <p class="mb-0 text-white text-center">© 2024 Copyright</p>
+      </div>
+    </footer>
+    
+
+    <!-- Profile Modal -->
+    <div class="modal-backdrop" ng-show="showProfileModal" ng-click="closeProfilePopup()"></div> <!-- Backdrop yang menutupi halaman -->
+    <div class="modal" tabindex="-1" id="profileModal" ng-show="showProfileModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Profil Pengguna</h5>
+            <button type="button" class="btn-close" ng-click="closeProfilePopup()" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p><strong>Nama:</strong> {{currentUser.username}}</p>
+            <p><strong>Email:</strong> {{currentUser.email}}</p>
+            <p><strong>Telepon:</strong> {{currentUser.phone}}</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" ng-click="closeProfilePopup()">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    
+
+    
+
+    <!-- Logout Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="logoutModal"
+      tabindex="-1"
+      aria-labelledby="logoutModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="logoutModalLabel">Konfirmasi Logout</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">Apakah Anda yakin ingin logout?</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Batal
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              ng-click="confirmLogout()"
+              data-bs-dismiss="modal"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

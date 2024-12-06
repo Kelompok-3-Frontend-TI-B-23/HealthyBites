@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Capriola&family=Carter+One&family=Original+Surfer&display=swap');
+
+:root{
+  --dark-green: #16542a;
+  --darker-green: #0a3d23;
+  --brown: #955306;
+  --yellow: #f3c430;
+  --crean: #ffffec;
+  --green: #68902b;
+  --light-green: #9bbc43;
+  }
+
+/* General Styling */
+body {
+  font-family: "Capriola", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-image: url('../assets/background/back2.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  min-height: 100vh; 
+  flex-direction: column; 
+  overflow: auto; 
+}
+
+/* Form Wrapper */
+.form-wrapper {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 50px;
+}
+
+/* Form Title */
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--dark-green);
+  margin-bottom: 20px;
+}
+
+/* Form Group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label Styling */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Input, Select, Textarea Styling */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Focus Styling */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--dark-green);
+  box-shadow: 0 0 4px rgba(22, 84, 42, 0.4);
+  outline: none;
+}
+
+/* Submit Button */
+.btn-submit {
+  background-color: var(--dark-green);
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.btn-submit:hover {
+  background-color: #007a39;
+}
+
+/* Form Link */
+.form-link a {
+  color: var(--dark-green);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.form-link a:hover {
+  text-decoration: underline;
+}

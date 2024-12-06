@@ -1,0 +1,56 @@
+/* Admin dashboard */
+:root{
+    --dark-green: #16542a;
+    --darker-green: #0a3d23;
+    --brown: #955306;
+    --yellow: #f3c430;
+    --darker-yellow: #eeb806;
+    --crean: #ffffec;
+    --green: #68902b;
+    --light-green: #9bbc43;
+    }
+
+    .card {
+      border: none;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan */
+    }
+    
+  .card:hover {
+    transform: scale(1.05);
+    transition: all 0.3s ease-in-out;
+  }
+  .card-header {
+    background-color: var(--dark-green);
+    color: white;
+  }
+
+/* Warna tombol untuk Add dan Edit */
+.btn-add {
+    background-color: var(--dark-green);
+    color: white;
+    border: none;
+  }
+  
+  .btn-add:hover {
+    background-color: var(--darker-green);
+    color: white;
+  }
+  
+  .btn-edit {
+    background-color: var(--yellow);
+    color: white;
+    border: none;
+  }
+  
+  .btn-edit:hover {
+    background-color: var(--darker-yellow);
+    color: white;
+    border: none;
+  }
+
+  .card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  

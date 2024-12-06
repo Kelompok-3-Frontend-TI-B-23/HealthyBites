@@ -1,7 +1,5 @@
 // Buat AngularJS module
-const app = angular.module("mainApp", []);
-
-app.controller('profileCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+angular.module("mainApp").controller('profileCtrl', function ($scope, $http, $location) {
     $scope.user = {};
     $scope.newPassword = '';
     $scope.confirmNewPassword = '';
@@ -9,14 +7,14 @@ app.controller('profileCtrl', ['$scope', '$http', '$window', function ($scope, $
     const token = localStorage.getItem('authToken');
   
     $scope.getUserProfile = function () {
-      $http.get('/profile', { headers: { Authorization: `Bearer ${token}` } })
+      $http.get('/profile', { headers: { Authorization: `Bearer ${token}`} })
         .then(function (response) {
           $scope.user = response.data;
         })
         .catch(function (error) {
           if (error.status === 401) {
             alert('You are not logged in. Redirecting to login page...');
-            $window.location.href = '/login';
+            $location.path('/login');
           } else {
             console.error('Error fetching user profile:', error);
             alert('Failed to load profile data.');
@@ -47,7 +45,7 @@ app.controller('profileCtrl', ['$scope', '$http', '$window', function ($scope, $
         .catch(function (error) {
           if (error.status === 401) {
             alert('You are not logged in. Redirecting to login page...');
-            $window.location.href = '/login';
+            $location.path('/login');
           } else {
             console.error('Error updating profile:', error);
             alert('Failed to update profile.');
@@ -56,5 +54,4 @@ app.controller('profileCtrl', ['$scope', '$http', '$window', function ($scope, $
     };
   
     $scope.getUserProfile();
-  }]);
-  
+  });
